@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roles</title>
+    <link rel="stylesheet" href="styles/employee.css" />
+    <link rel="stylesheet" href="styles/roles.css" />
+    <link rel="stylesheet" href="styles/roledetails.css" />
+
+    <!-- Importing Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="main-container">
+      <!-- Side Panel -->
+      <div class="side-panel">
+        <img
+          src="assets/handle.png"
+          class="sidePanel-collapse-btn"
+          alt="collapse btn"
+        />
+        <!-- Logo-->
+
+        <div class="side-panel-content">
+          <div class="side-panel-header">
+            <img src="assets/tezo-logo.svg" alt="tezo-logo" />
+          </div>
+
+          <!-- All -->
+          <div class="sidePanel-section">
+            <div class="sidePanel-heading">ALL</div>
+
+            <div class="sidePanel-section-selector">
+              <div class="sidePanel-header-container">
+                <img
+                  class="sidePanel-logos"
+                  src="assets/horizontal-nav/dashboard.svg"
+                />
+                <p class="sidePanel-title">Dashboard</p>
+
+                <div class="pseudo-side-bar"></div>
+              </div>
+            </div>
+
+            <div class="sidePanel-section-selector">
+              <a href="employees.html">
+                <div class="sidePanel-header-container">
+                  <img
+                    class="sidePanel-logos"
+                    src="assets/horizontal-nav/employees.svg"
+                  />
+                  <p class="sidePanel-title">Employees</p>
+
+                  <div class="pseudo-side-bar"></div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Roles -->
+          <div class="sidePanel-section">
+            <div class="sidePanel-heading">ROLE / USER MANAGEMENT</div>
+            <div class="sidePanel-section-selector">
+              <a href="roles.html">
+                <div class="sidePanel-header-container">
+                  <img
+                    class="sidePanel-logos"
+                    src="assets/horizontal-nav/roles.svg"
+                  />
+                  <p class="sidePanel-title">Roles</p>
+                  <div class="pseudo-side-bar"></div>
+                </div>
+              </a>
+            </div>
+            <div class="sidePanel-section-selector">
+              <a href="role-details.html">
+                <div class="sidePanel-header-container">
+                  <img
+                    class="sidePanel-logos"
+                    src="assets/horizontal-nav/roles.svg"
+                  />
+                  <p class="sidePanel-title">Role Details</p>
+                  <div class="pseudo-side-bar"></div>
+                </div>
+              </a>
+            </div>
+
+            <div class="sidePanel-section-selector">
+              <div class="sidePanel-header-container">
+                <img
+                  class="sidePanel-logos"
+                  src="assets/horizontal-nav/assign-user.svg"
+                />
+                <p class="sidePanel-title">Access Rights</p>
+
+                <div class="pseudo-side-bar"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Update -->
+        <div class="sidePanel-update-box">
+          <p class="sidePanel-update-box-heading">Install new update 2.3.1A</p>
+          <p class="sidePanel-update-box-desc">
+            Allow to launch the new update for the AD application
+          </p>
+          <div class="sidePanel-update-box-btn-container">
+            <button class="update-btn dismiss">Dismiss</button>
+            <button class="update-btn accept">Accept</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- MainPanel -->
+
+      <div class="main-panel">
+        <!-- Search Header -->
+        <div class="header-search">
+          <div class="header-search-section flex">
+            <img
+              src="assets/bx-search.png"
+              class="header-search-search-icon"
+              alt="search"
+            />
+            <input
+              type="text"
+              class="header-search-box"
+              placeholder="Search (Ctrl+/)"
+            />
+          </div>
+          <div class="header-search-icons flex">
+            <img src="assets/vertical-nav/language.svg" alt="lang" />
+            <img src="assets/vertical-nav/categories.svg" alt="category" />
+            <img src="assets/vertical-nav/mode.svg" alt="darkmode" />
+            <img
+              src="assets/vertical-nav/notifications.svg"
+              alt="notifications"
+            />
+            <div class="header-search-profile">
+              <img
+                src="assets/profle-pic.png"
+                alt="profile-pic"
+                class="header-profile-img"
+              />
+
+              <div class="header-search-profile-desc">
+                <p class="header-profile-name">John Abraham</p>
+                <p class="header-profile-admin">Admin</p>
+              </div>
+
+              <i class="fa-solid fa-chevron-right"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Roles Header -->
+        <div class="employees-header">
+          <div class="employees-header-content">
+            <div class="employee-header-content-title">
+              Roles
+              <i class="fa-solid fa-angle-right"></i>
+              Employees
+            </div>
+
+            <div class="employee-header-content-desc">
+              All the roles are configured here.
+            </div>
+          </div>
+
+          <button class="employees-header-btn-add-employee">
+            <img src="assets/interface/add.svg" alt="" />
+            <p>ADD EMPLOYEE</p>
+          </button>
+        </div>
+
+        <!-- Role Description -->
+        <div class="role-description">
+          <p class="role-desc-heading">Role Description</p>
+          <p class="role-desc-content">
+            Configure the providers that are available to users when they sign
+            in. Configure the providers that are available to users when they
+            sign in. Configure the providers that are available to users when
+            they sign in. Configure the providers that are available to users
+            when they sign in.
+          </p>
+        </div>
+
+        <div class="roles-card-section">
+          <div class="roles-card">
+            <div class="roles-card-profile flex">
+              <img
+                src="assets/role-details-profile-1.PNG"
+                alt="profile-pic"
+                class="role-detail-profile-img"
+              />
+
+              <div>
+                <p class="profile-detail-name">Robert Fox</p>
+                <p class="profile-detail-postion">Head of Product Design</p>
+              </div>
+            </div>
+
+            <div class="role-profile-details">
+              <div class="role-profile-detail-row flex">
+                <img src="assets/inf-id.svg" alt="" />
+                <p>INF122</p>
+              </div>
+              <div class="role-profile-detail-row flex">
+                <img src="assets/email-logo.svg" alt="" />
+                <p>adamk@yahoo.com</p>
+              </div>
+              <div class="role-profile-detail-row flex">
+                <img src="assets/employees-icon.svg" alt="" />
+                <p>Technology</p>
+              </div>
+              <div class="role-profile-detail-row flex">
+                <img src="assets/location-icon.svg" alt="" />
+                <p>Stockton, New Hampsphire</p>
+              </div>
+            </div>
+
+            <div class="roles-card-bottom flex">
+              <p>View</p>
+              <img src="assets/right-arrow-icon.svg" alt="" />
+            </div>
+          </div>
+
+          <div class="roles-card">
+            <div class="roles-card-profile flex">
+              <img
+                src="assets/role-details-profile-2.PNG"
+                alt="profile-pic"
+                class="role-detail-profile-img"
+              />
+
+              <div>
+                <p class="profile-detail-name">Marvin McKinney</p>
+                <p class="profile-detail-postion">Head of Engineering</p>
+              </div>
+            </div>
+
+            <div class="role-profile-details">
+              <div class="role-profile-detail-row flex">
+                <img src="assets/inf-id.svg" alt="" />
+                <p>INF150</p>
+              </div>
+              <div class="role-profile-detail-row flex">
+                <img src="assets/email-logo.svg" alt="" />
+                <p>sravani@yahoo.com</p>
+              </div>
+              <div class="role-profile-detail-row flex">
+                <img src="assets/employees-icon.svg" alt="" />
+                <p>Admin</p>
+              </div>
+              <div class="role-profile-detail-row flex">
+                <img src="assets/location-icon.svg" alt="" />
+                <p>Syracuse, Connecticut</p>
+              </div>
+            </div>
+
+            <div class="roles-card-bottom flex">
+              <p>View</p>
+              <img src="assets/right-arrow-icon.svg" alt="" />
+            </div>
+          </div>
+
+          <div class="roles-card">
+            <div class="roles-card-profile flex">
+              <img
+                src="assets/role-details-profile-3.PNG"
+                alt="profile-pic"
+                class="role-detail-profile-img"
+              />
+
+              <div>
+                <p class="profile-detail-name">Eleanor Pena</p>
+                <p class="profile-detail-postion">Senior Interaction Designer</p>
+              </div>
+            </div>
+
+            <div class="role-profile-details">
+              <div class="role-profile-detail-row flex">
+                <img src="assets/inf-id.svg" alt="" />
+                <p>INF240</p>
+              </div>
+              <div class="role-profile-detail-row flex">
+                <img src="assets/email-logo.svg" alt="" />
+                <p>grolschie@yahoo.com</p>
+              </div>
+              <div class="role-profile-detail-row flex">
+                <img src="assets/employees-icon.svg" alt="" />
+                <p>Customer Executive</p>
+              </div>
+              <div class="role-profile-detail-row flex">
+                <img src="assets/location-icon.svg" alt="" />
+                <p>Stockton, New Hampsphire</p>
+              </div>
+            </div>
+
+            <div class="roles-card-bottom flex">
+              <p>View</p>
+              <img src="assets/right-arrow-icon.svg" alt="" />
+            </div>
+          </div>
+
+          <div class="roles-card">
+            <div class="roles-card-profile flex">
+              <img
+                src="assets/role-details-profile-4.PNG"
+                alt="profile-pic"
+                class="role-detail-profile-img"
+              />
+
+              <div>
+                <p class="profile-detail-name">Jane Copper</p>
+                <p class="profile-detail-postion">Product Analyst</p>
+              </div>
+            </div>
+
+            <div class="role-profile-details">
+              <div class="role-profile-detail-row flex">
+                <img src="assets/inf-id.svg" alt="" />
+                <p>INF389</p>
+              </div>
+              <div class="role-profile-detail-row flex">
+                <img src="assets/email-logo.svg" alt="" />
+                <p>chronos@aol.com</p>
+              </div>
+              <div class="role-profile-detail-row flex">
+                <img src="assets/employees-icon.svg" alt="" />
+                <p>Product</p>
+              </div>
+              <div class="role-profile-detail-row flex">
+                <img src="assets/location-icon.svg" alt="" />
+                <p>Coppell, Virginia</p>
+              </div>
+            </div>
+
+            <div class="roles-card-bottom flex">
+              <p>View</p>
+              <img src="assets/right-arrow-icon.svg" alt="" />
+            </div>
+          </div>
+
+          <div class="roles-card">
+            <div class="roles-card-profile flex">
+              <img
+                src="assets/role-details-profile-5.PNG"
+                alt="profile-pic"
+                class="role-detail-profile-img"
+              />
+
+              <div>
+                <p class="profile-detail-name">Floyd Miles</p>
+                <p class="profile-detail-postion">Visual Designer</p>
+              </div>
+            </div>
+
+            <div class="role-profile-details">
+              <div class="role-profile-detail-row flex">
+                <img src="assets/inf-id.svg" alt="" />
+                <p>INF209</p>
+              </div>
+              <div class="role-profile-detail-row flex">
+                <img src="assets/email-logo.svg" alt="" />
+                <p>dgatwood@msn.com</p>
+              </div>
+              <div class="role-profile-detail-row flex">
+                <img src="assets/employees-icon.svg" alt="" />
+                <p>Customer Executive</p>
+              </div>
+              <div class="role-profile-detail-row flex">
+                <img src="assets/location-icon.svg" alt="" />
+                <p>Langsing, Illionis</p>
+              </div>
+            </div>
+
+            <div class="roles-card-bottom flex">
+              <p>View</p>
+              <img src="assets/right-arrow-icon.svg" alt="" />
+            </div>
+          </div>
+
+          <div class="roles-card">
+            <div class="roles-card-profile flex">
+              <img
+                src="assets/role-details-profile-6.PNG"
+                alt="profile-pic"
+                class="role-detail-profile-img"
+              />
+
+              <div>
+                <p class="profile-detail-name">Dianne Russell</p>
+                <p class="profile-detail-postion">Full Stack Software Engineer</p>
+              </div>
+            </div>
+
+            <div class="role-profile-details">
+              <div class="role-profile-detail-row flex">
+                <img src="assets/inf-id.svg" alt="" />
+                <p>INF922</p>
+              </div>
+              <div class="role-profile-detail-row flex">
+                <img src="assets/email-logo.svg" alt="" />
+                <p>kspiteri@live.com</p>
+              </div>
+              <div class="role-profile-detail-row flex">
+                <img src="assets/employees-icon.svg" alt="" />
+                <p>Human Research</p>
+              </div>
+              <div class="role-profile-detail-row flex">
+                <img src="assets/location-icon.svg" alt="" />
+                <p>Corona, Michigan</p>
+              </div>
+            </div>
+
+            <div class="roles-card-bottom flex">
+              <p>View</p>
+              <img src="assets/right-arrow-icon.svg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

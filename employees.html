@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee</title>
+    <link rel="stylesheet" href="styles/employee.css" />
+
+    <!-- Importing Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="main-container">
+      <!-- Side Panel -->
+      <div class="side-panel">
+        <img
+          src="assets/handle.png"
+          class="sidePanel-collapse-btn"
+          alt="collapse btn"
+        />
+        <!-- Logo-->
+
+        <div class="side-panel-content">
+          <div class="side-panel-header">
+            <img src="assets/tezo-logo.svg" alt="tezo-logo" />
+          </div>
+
+          <!-- All -->
+          <div class="sidePanel-section">
+            <div class="sidePanel-heading">ALL</div>
+
+            <div class="sidePanel-section-selector">
+              <div class="sidePanel-header-container">
+                <img
+                  class="sidePanel-logos"
+                  src="assets/horizontal-nav/dashboard.svg"
+                />
+                <p class="sidePanel-title">Dashboard</p>
+
+                <div class="pseudo-side-bar"></div>
+              </div>
+            </div>
+
+            <div class="sidePanel-section-selector">
+              <div class="sidePanel-header-container">
+                <img
+                  class="sidePanel-logos"
+                  src="assets/horizontal-nav/employees.svg"
+                />
+                <p class="sidePanel-title">Employees</p>
+
+                <div class="pseudo-side-bar"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Roles -->
+          <div class="sidePanel-section">
+            <div class="sidePanel-heading">ROLE / USER MANAGEMENT</div>
+            <div class="sidePanel-section-selector">
+              <a href="roles.html">
+                <div class="sidePanel-header-container">
+                  <img
+                    class="sidePanel-logos"
+                    src="assets/horizontal-nav/roles.svg"
+                  />
+                  <p class="sidePanel-title">Roles</p>
+                  <div class="pseudo-side-bar"></div>
+                </div>
+              </a>
+            </div>
+            <div class="sidePanel-section-selector">
+              <a href="role-details.html">
+                <div class="sidePanel-header-container">
+                  <img
+                    class="sidePanel-logos"
+                    src="assets/horizontal-nav/roles.svg"
+                  />
+                  <p class="sidePanel-title">Role Details</p>
+                  <div class="pseudo-side-bar"></div>
+                </div>
+              </a>
+            </div>
+
+            <div class="sidePanel-section-selector">
+              <div class="sidePanel-header-container">
+                <img
+                  class="sidePanel-logos"
+                  src="assets/horizontal-nav/assign-user.svg"
+                />
+                <p class="sidePanel-title">Access Rights</p>
+
+                <div class="pseudo-side-bar"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Update -->
+        <div class="sidePanel-update-box">
+          <p class="sidePanel-update-box-heading">Install new update 2.3.1A</p>
+          <p class="sidePanel-update-box-desc">
+            Allow to launch the new update for the AD application
+          </p>
+          <div class="sidePanel-update-box-btn-container">
+            <button class="update-btn dismiss">Dismiss</button>
+            <button class="update-btn accept">Accept</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- MainPanel -->
+
+      <div class="main-panel">
+        <!-- Search Header -->
+        <div class="header-search">
+          <div class="header-search-section flex">
+            <img
+              src="assets/bx-search.png"
+              class="header-search-search-icon"
+              alt="search"
+            />
+            <input
+              type="text"
+              class="header-search-box"
+              placeholder="Search (Ctrl+/)"
+            />
+          </div>
+          <div class="header-search-icons flex">
+            <img src="assets/vertical-nav/language.svg" alt="lang" />
+            <img src="assets/vertical-nav/categories.svg" alt="category" />
+            <img src="assets/vertical-nav/mode.svg" alt="darkmode" />
+            <img
+              src="assets/vertical-nav/notifications.svg"
+              alt="notifications"
+            />
+            <div class="header-search-profile">
+              <img
+                src="assets/profle-pic.png"
+                alt="profile-pic"
+                class="header-profile-img"
+              />
+
+              <div class="header-search-profile-desc">
+                <p class="header-profile-name">John Abraham</p>
+                <p class="header-profile-admin">Admin</p>
+              </div>
+
+              <i class="fa-solid fa-chevron-right"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Employees Header -->
+        <div class="employees-header">
+          <div class="employees-header-content">
+            <div class="employee-header-content-title">Employees</div>
+            <div class="employee-header-content-desc">
+              Find all your company's employee accounts and their assoiciated
+              roles.
+            </div>
+          </div>
+          <button class="employees-header-btn-export">
+            <img src="assets/interface/export.svg" alt="export" />
+            <p>EXPORT</p>
+          </button>
+          <button class="employees-header-btn-add-employee">
+            <img src="assets/interface/add.svg" alt="" />
+            <p>ADD EMPLOYEE</p>
+          </button>
+        </div>
+
+        <!-- Filter Alphabets-->
+        <div class="filter">
+          <img
+            src="assets/interface/filter.svg"
+            class="filter-icon"
+            alt="filter"
+          />
+          <div class="filter-alphabets">
+            <div>A</div>
+            <div>B</div>
+            <div>C</div>
+            <div>D</div>
+            <div>E</div>
+            <div>F</div>
+            <div>G</div>
+            <div>H</div>
+            <div>I</div>
+            <div>J</div>
+            <div>K</div>
+            <div>L</div>
+            <div>M</div>
+            <div>N</div>
+            <div>O</div>
+            <div>P</div>
+            <div>Q</div>
+            <div>R</div>
+            <div>S</div>
+            <div>T</div>
+            <div>U</div>
+            <div>V</div>
+            <div>W</div>
+            <div>X</div>
+            <div>Y</div>
+            <div>Z</div>
+          </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filter-options flex">
+          <div class="filter-columns flex">
+            <div><p class="filter-options-title">Filter</p></div>
+            <img src="assets/filter-sort.png" alt="" />
+
+            <button class="filter-options-btn">
+              Status
+              <i class="fa-solid fa-angle-down"></i>
+            </button>
+
+            <button class="filter-options-btn">
+              Location
+              <i class="fa-solid fa-angle-down"></i>
+            </button>
+
+            <button class="filter-options-btn">
+              Department
+              <i class="fa-solid fa-angle-down"></i>
+            </button>
+          </div>
+
+          <div class="filter-options-process">
+            <button class="filter-options-reset">Reset</button>
+            <button class="filter-options-apply">Apply</button>
+          </div>
+        </div>
+
+        <!-- Employee Table -->
+        
+        <div class="employee-table">
+          <div class="employee-table-header flex">
+            <div class="employee-table-header-del flex">
+              <img
+                src="assets/interface/arrow-turn-left-down.svg"
+                alt="arrow-turn-left-down"
+              />
+              <button class="btn-delete">Delete</button>
+            </div>
+
+            <div class="employee-table-header-table-add">
+              <img src="assets/table-add.png" alt="table-add" />
+            </div>
+          </div>
+
+          <div class="employee-row-heading">
+            <div class="employee-table-row checkbox">
+              <input type="checkbox" name="check" id="" />
+            </div>
+            <div class="employee-table-row">
+              <p>USER</p>
+              <i class="fa-solid fa-sort"></i>
+            </div>
+            <div class="employee-table-row flex">
+              <p>LOCATION</p>
+              <i class="fa-solid fa-sort"></i>
+            </div>
+            <div class="employee-table-row">
+              <p>DEPARTMENT</p>
+              <i class="fa-solid fa-sort"></i>
+            </div>
+            <div class="employee-table-row">
+              <p>ROLE</p>
+              <i class="fa-solid fa-sort"></i>
+            </div>
+            <div class="employee-table-row">
+              <p>EMP NO</p>
+              <i class="fa-solid fa-sort"></i>
+            </div>
+            <div class="employee-table-row">
+              <p>STATUS</p>
+              <i class="fa-solid fa-sort"></i>
+            </div>
+            <div class="employee-table-row">
+              <p>JOIN DT</p>
+              <i class="fa-solid fa-sort"></i>
+            </div>
+            <div class="employee-table-row">
+              <p>...</p>
+            </div>
+          </div>
+          <div class="employee-table-rows-section">
+            <div class="employee-table-rows">
+              <div class="employee-table-row checkbox">
+                <input type="checkbox" name="check" id="" />
+              </div>
+              <div class="table-user">
+                <img src="assets/user-profile-1.png" alt="user-profile-pic" />
+                <div>
+                  <p class="user-profile-name">Edgar Jones</p>
+                  <p class="user-profile-email">edgar@tezo.com</p>
+                </div>
+              </div>
+              <div><p class="employee-table-row-data">Hyderabad</p></div>
+              <div><p class="employee-table-row-data">Product Engg</p></div>
+              <div>
+                <p class="employee-table-row-data">Full-Stack Developer</p>
+              </div>
+              <div><p class="employee-table-row-data">TZ002341</p></div>
+              <div><button class="active-btn">Active</button></div>
+              <div><p class="employee-table-row-data">12/03/2023</p></div>
+              <div><p class="employee-table-row-data">...</p></div>
+            </div>
+
+            <div class="employee-table-rows">
+              <div class="employee-table-row checkbox">
+                <input type="checkbox" name="check" id="" />
+              </div>
+              <div class="table-user">
+                <img src="assets/user-profile-2.png" alt="user-profile-pic" />
+                <div>
+                  <p class="user-profile-name">Edgar Jones</p>
+                  <p class="user-profile-email">edgar@tezo.com</p>
+                </div>
+              </div>
+              <div><p class="employee-table-row-data">Hyderabad</p></div>
+              <div><p class="employee-table-row-data">Product Engg</p></div>
+              <div>
+                <p class="employee-table-row-data">Full-Stack Developer</p>
+              </div>
+              <div><p class="employee-table-row-data">TZ002341</p></div>
+              <div><button class="active-btn">Active</button></div>
+              <div><p class="employee-table-row-data">12/03/2023</p></div>
+              <div><p class="employee-table-row-data">...</p></div>
+            </div>
+
+            <div class="employee-table-rows">
+              <div class="employee-table-row checkbox">
+                <input type="checkbox" name="check" id="" />
+              </div>
+              <div class="table-user">
+                <img src="assets/user-profile-3.png" alt="user-profile-pic" />
+                <div>
+                  <p class="user-profile-name">Edgar Jones</p>
+                  <p class="user-profile-email">edgar@tezo.com</p>
+                </div>
+              </div>
+              <div><p class="employee-table-row-data">Hyderabad</p></div>
+              <div><p class="employee-table-row-data">Product Engg</p></div>
+              <div>
+                <p class="employee-table-row-data">Full-Stack Developer</p>
+              </div>
+              <div><p class="employee-table-row-data">TZ002341</p></div>
+              <div><button class="active-btn">Active</button></div>
+              <div><p class="employee-table-row-data">12/03/2023</p></div>
+              <div><p class="employee-table-row-data">...</p></div>
+            </div>
+
+            <div class="employee-table-rows">
+              <div class="employee-table-row checkbox">
+                <input type="checkbox" name="check" id="" />
+              </div>
+              <div class="table-user">
+                <img src="assets/user-profile-4.png" alt="user-profile-pic" />
+                <div>
+                  <p class="user-profile-name">Edgar Jones</p>
+                  <p class="user-profile-email">edgar@tezo.com</p>
+                </div>
+              </div>
+              <div><p class="employee-table-row-data">Hyderabad</p></div>
+              <div><p class="employee-table-row-data">Product Engg</p></div>
+              <div>
+                <p class="employee-table-row-data">Full-Stack Developer</p>
+              </div>
+              <div><p class="employee-table-row-data">TZ002341</p></div>
+              <div><button class="active-btn">Active</button></div>
+              <div><p class="employee-table-row-data">12/03/2023</p></div>
+              <div><p class="employee-table-row-data">...</p></div>
+            </div>
+
+            <div class="employee-table-rows">
+              <div class="employee-table-row checkbox">
+                <input type="checkbox" name="check" id="" />
+              </div>
+              <div class="table-user">
+                <img src="assets/user-profile-5.png" alt="user-profile-pic" />
+                <div>
+                  <p class="user-profile-name">Edgar Jones</p>
+                  <p class="user-profile-email">edgar@tezo.com</p>
+                </div>
+              </div>
+              <div><p class="employee-table-row-data">Hyderabad</p></div>
+              <div><p class="employee-table-row-data">Product Engg</p></div>
+              <div>
+                <p class="employee-table-row-data">Full-Stack Developer</p>
+              </div>
+              <div><p class="employee-table-row-data">TZ002341</p></div>
+              <div><button class="active-btn">Active</button></div>
+              <div><p class="employee-table-row-data">12/03/2023</p></div>
+              <div><p class="employee-table-row-data">...</p></div>
+            </div>
+
+            <div class="employee-table-rows">
+              <div class="employee-table-row checkbox">
+                <input type="checkbox" name="check" id="" />
+              </div>
+              <div class="table-user">
+                <img src="assets/user-profile-1.png" alt="user-profile-pic" />
+                <div>
+                  <p class="user-profile-name">Edgar Jones</p>
+                  <p class="user-profile-email">edgar@tezo.com</p>
+                </div>
+              </div>
+              <div><p class="employee-table-row-data">Hyderabad</p></div>
+              <div><p class="employee-table-row-data">Product Engg</p></div>
+              <div>
+                <p class="employee-table-row-data">Full-Stack Developer</p>
+              </div>
+              <div><p class="employee-table-row-data">TZ002341</p></div>
+              <div><button class="active-btn">Active</button></div>
+              <div><p class="employee-table-row-data">12/03/2023</p></div>
+              <div><p class="employee-table-row-data">...</p></div>
+            </div>
+
+            <div class="employee-table-rows">
+              <div class="employee-table-row checkbox">
+                <input type="checkbox" name="check" id="" />
+              </div>
+              <div class="table-user">
+                <img src="assets/user-profile-2.png" alt="user-profile-pic" />
+                <div>
+                  <p class="user-profile-name">Edgar Jones</p>
+                  <p class="user-profile-email">edgar@tezo.com</p>
+                </div>
+              </div>
+              <div><p class="employee-table-row-data">Hyderabad</p></div>
+              <div><p class="employee-table-row-data">Product Engg</p></div>
+              <div>
+                <p class="employee-table-row-data">Full-Stack Developer</p>
+              </div>
+              <div><p class="employee-table-row-data">TZ002341</p></div>
+              <div><button class="active-btn">Active</button></div>
+              <div><p class="employee-table-row-data">12/03/2023</p></div>
+              <div><p class="employee-table-row-data">...</p></div>
+            </div>
+
+            <div class="employee-table-rows">
+              <div class="employee-table-row checkbox">
+                <input type="checkbox" name="check" id="" />
+              </div>
+              <div class="table-user">
+                <img src="assets/user-profile-3.png" alt="user-profile-pic" />
+                <div>
+                  <p class="user-profile-name">Edgar Jones</p>
+                  <p class="user-profile-email">edgar@tezo.com</p>
+                </div>
+              </div>
+              <div><p class="employee-table-row-data">Hyderabad</p></div>
+              <div><p class="employee-table-row-data">Product Engg</p></div>
+              <div>
+                <p class="employee-table-row-data">Full-Stack Developer</p>
+              </div>
+              <div><p class="employee-table-row-data">TZ002341</p></div>
+              <div><button class="active-btn">Active</button></div>
+              <div><p class="employee-table-row-data">12/03/2023</p></div>
+              <div><p class="employee-table-row-data">...</p></div>
+            </div>
+
+            <div class="employee-table-rows">
+              <div class="employee-table-row checkbox">
+                <input type="checkbox" name="check" id="" />
+              </div>
+              <div class="table-user">
+                <img src="assets/user-profile-4.png" alt="user-profile-pic" />
+                <div>
+                  <p class="user-profile-name">Edgar Jones</p>
+                  <p class="user-profile-email">edgar@tezo.com</p>
+                </div>
+              </div>
+              <div><p class="employee-table-row-data">Hyderabad</p></div>
+              <div><p class="employee-table-row-data">Product Engg</p></div>
+              <div>
+                <p class="employee-table-row-data">Full-Stack Developer</p>
+              </div>
+              <div><p class="employee-table-row-data">TZ002341</p></div>
+              <div><button class="active-btn">Active</button></div>
+              <div><p class="employee-table-row-data">12/03/2023</p></div>
+              <div><p class="employee-table-row-data">...</p></div>
+            </div>
+
+            <div class="employee-table-rows">
+              <div class="employee-table-row checkbox">
+                <input type="checkbox" name="check" id="" />
+              </div>
+              <div class="table-user">
+                <img src="assets/user-profile-5.png" alt="user-profile-pic" />
+                <div>
+                  <p class="user-profile-name">Edgar Jones</p>
+                  <p class="user-profile-email">edgar@tezo.com</p>
+                </div>
+              </div>
+              <div><p class="employee-table-row-data">Hyderabad</p></div>
+              <div><p class="employee-table-row-data">Product Engg</p></div>
+              <div>
+                <p class="employee-table-row-data">Full-Stack Developer</p>
+              </div>
+              <div><p class="employee-table-row-data">TZ002341</p></div>
+              <div><button class="active-btn">Active</button></div>
+              <div><p class="employee-table-row-data">12/03/2023</p></div>
+              <div><p class="employee-table-row-data">...</p></div>
+            </div>
+
+            <div class="employee-table-rows">
+              <div class="employee-table-row checkbox">
+                <input type="checkbox" name="check" id="" />
+              </div>
+              <div class="table-user">
+                <img src="assets/user-profile-1.png" alt="user-profile-pic" />
+                <div>
+                  <p class="user-profile-name">Edgar Jones</p>
+                  <p class="user-profile-email">edgar@tezo.com</p>
+                </div>
+              </div>
+              <div><p class="employee-table-row-data">Hyderabad</p></div>
+              <div><p class="employee-table-row-data">Product Engg</p></div>
+              <div>
+                <p class="employee-table-row-data">Full-Stack Developer</p>
+              </div>
+              <div><p class="employee-table-row-data">TZ002341</p></div>
+              <div><button class="active-btn">Active</button></div>
+              <div><p class="employee-table-row-data">12/03/2023</p></div>
+              <div><p class="employee-table-row-data">...</p></div>
+            </div>
+
+            <div class="employee-table-rows">
+              <div class="employee-table-row checkbox">
+                <input type="checkbox" name="check" id="" />
+              </div>
+              <div class="table-user">
+                <img src="assets/user-profile-2.png" alt="user-profile-pic" />
+                <div>
+                  <p class="user-profile-name">Edgar Jones</p>
+                  <p class="user-profile-email">edgar@tezo.com</p>
+                </div>
+              </div>
+              <div><p class="employee-table-row-data">Hyderabad</p></div>
+              <div><p class="employee-table-row-data">Product Engg</p></div>
+              <div>
+                <p class="employee-table-row-data">Full-Stack Developer</p>
+              </div>
+              <div><p class="employee-table-row-data">TZ002341</p></div>
+              <div><button class="active-btn">Active</button></div>
+              <div><p class="employee-table-row-data">12/03/2023</p></div>
+              <div><p class="employee-table-row-data">...</p></div>
+            </div>
+
+            <div class="employee-table-rows">
+              <div class="employee-table-row checkbox">
+                <input type="checkbox" name="check" id="" />
+              </div>
+              <div class="table-user">
+                <img src="assets/user-profile-3.png" alt="user-profile-pic" />
+                <div>
+                  <p class="user-profile-name">Edgar Jones</p>
+                  <p class="user-profile-email">edgar@tezo.com</p>
+                </div>
+              </div>
+              <div><p class="employee-table-row-data">Hyderabad</p></div>
+              <div><p class="employee-table-row-data">Product Engg</p></div>
+              <div>
+                <p class="employee-table-row-data">Full-Stack Developer</p>
+              </div>
+              <div><p class="employee-table-row-data">TZ002341</p></div>
+              <div><button class="active-btn">Active</button></div>
+              <div><p class="employee-table-row-data">12/03/2023</p></div>
+              <div><p class="employee-table-row-data">...</p></div>
+            </div>
+
+            <div class="employee-table-rows">
+              <div class="employee-table-row checkbox">
+                <input type="checkbox" name="check" id="" />
+              </div>
+              <div class="table-user">
+                <img src="assets/user-profile-4.png" alt="user-profile-pic" />
+                <div>
+                  <p class="user-profile-name">Edgar Jones</p>
+                  <p class="user-profile-email">edgar@tezo.com</p>
+                </div>
+              </div>
+              <div><p class="employee-table-row-data">Hyderabad</p></div>
+              <div><p class="employee-table-row-data">Product Engg</p></div>
+              <div>
+                <p class="employee-table-row-data">Full-Stack Developer</p>
+              </div>
+              <div><p class="employee-table-row-data">TZ002341</p></div>
+              <div><button class="active-btn">Active</button></div>
+              <div><p class="employee-table-row-data">12/03/2023</p></div>
+              <div><p class="employee-table-row-data">...</p></div>
+            </div>
+
+            <div class="employee-table-rows">
+              <div class="employee-table-row checkbox">
+                <input type="checkbox" name="check" id="" />
+              </div>
+              <div class="table-user">
+                <img src="assets/user-profile-5.png" alt="user-profile-pic" />
+                <div>
+                  <p class="user-profile-name">Edgar Jones</p>
+                  <p class="user-profile-email">edgar@tezo.com</p>
+                </div>
+              </div>
+              <div><p class="employee-table-row-data">Hyderabad</p></div>
+              <div><p class="employee-table-row-data">Product Engg</p></div>
+              <div>
+                <p class="employee-table-row-data">Full-Stack Developer</p>
+              </div>
+              <div><p class="employee-table-row-data">TZ002341</p></div>
+              <div><button class="active-btn">Active</button></div>
+              <div><p class="employee-table-row-data">12/03/2023</p></div>
+              <div><p class="employee-table-row-data">...</p></div>
+            </div>
+          </div>
+        </div>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
