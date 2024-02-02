@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Employee</title>
+    <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/employee.css" />
 
     <!-- Importing Icons -->
@@ -21,7 +22,7 @@
       <div class="side-panel">
         <img
           src="assets/handle.png"
-          class="sidePanel-collapse-btn"
+          class="side-panel-collapse-btn"
           alt="collapse btn"
         />
         <!-- Logo-->
@@ -32,82 +33,119 @@
           </div>
 
           <!-- All -->
-          <div class="sidePanel-section">
-            <div class="sidePanel-heading">ALL</div>
+          <div class="side-panel-section">
+            <div class="side-panel-heading">ALL</div>
 
-            <div class="sidePanel-section-selector">
-              <div class="sidePanel-header-container">
-                <img
-                  class="sidePanel-logos"
-                  src="assets/horizontal-nav/dashboard.svg"
-                />
-                <p class="sidePanel-title">Dashboard</p>
+            <div class="side-panel-section-selector">
+              <div class="side-panel-header-container">
+                <div class="svg-container">
+                  <img
+                    src="assets/horizontal-nav/dashboard-black.svg"
+                    alt=""
+                    class="svg-image svg-black"
+                  />
+                  <img
+                    src="assets/horizontal-nav/dashboard-red.svg"
+                    alt=""
+                    class="svg-image svg-red"
+                  />
+                </div>
+                <p class="side-panel-title">Dashboard</p>
 
-                <div class="pseudo-side-bar"></div>
               </div>
             </div>
 
-            <div class="sidePanel-section-selector">
-              <div class="sidePanel-header-container">
-                <img
-                  class="sidePanel-logos"
-                  src="assets/horizontal-nav/employees.svg"
-                />
-                <p class="sidePanel-title">Employees</p>
+            <div class="side-panel-section-selector">
+              <a href="index.html">
+                <div class="side-panel-header-container active-selector">
+                  <div class="svg-container">
+                    <img
+                      src="assets/horizontal-nav/employees-black.svg"
+                      alt=""
+                      class="svg-image svg-black"
+                    />
+                    <img
+                      src="assets/horizontal-nav/employees-red.svg"
+                      alt=""
+                      class="svg-image svg-red"
+                    />
+                  </div>
+                  <p class="side-panel-title">Employees</p>
 
-                <div class="pseudo-side-bar"></div>
-              </div>
+                  <div class="pseudo-side-bar"></div>
+                </div>
+              </a>
             </div>
           </div>
 
           <!-- Roles -->
-          <div class="sidePanel-section">
-            <div class="sidePanel-heading">ROLE / USER MANAGEMENT</div>
-            <div class="sidePanel-section-selector">
+          <div class="side-panel-section">
+            <div class="side-panel-heading">ROLE / USER MANAGEMENT</div>
+            <div class="side-panel-section-selector">
               <a href="roles.html">
-                <div class="sidePanel-header-container">
-                  <img
-                    class="sidePanel-logos"
-                    src="assets/horizontal-nav/roles.svg"
-                  />
-                  <p class="sidePanel-title">Roles</p>
-                  <div class="pseudo-side-bar"></div>
+                <div class="side-panel-header-container">
+                  <div class="svg-container">
+                    <img
+                      src="assets/horizontal-nav/roles-black.svg"
+                      alt=""
+                      class="svg-image svg-black"
+                    />
+                    <img
+                      src="assets/horizontal-nav/roles-red.svg"
+                      alt=""
+                      class="svg-image svg-red"
+                    />
+                  </div>
+                  <p class="side-panel-title">Roles</p>
                 </div>
               </a>
             </div>
-            <div class="sidePanel-section-selector">
+            <div class="side-panel-section-selector">
               <a href="role-details.html">
-                <div class="sidePanel-header-container">
-                  <img
-                    class="sidePanel-logos"
-                    src="assets/horizontal-nav/roles.svg"
-                  />
-                  <p class="sidePanel-title">Role Details</p>
-                  <div class="pseudo-side-bar"></div>
+                <div class="side-panel-header-container">
+                  <div class="svg-container">
+                    <img
+                      src="assets/horizontal-nav/assign-user-black.svg"
+                      alt=""
+                      class="svg-image svg-black"
+                    />
+                    <img
+                      src="assets/horizontal-nav/assign-user-red.svg"
+                      alt=""
+                      class="svg-image svg-red"
+                    />
+                  </div>
+                  <p class="side-panel-title">Role Details</p>
                 </div>
               </a>
             </div>
 
-            <div class="sidePanel-section-selector">
-              <div class="sidePanel-header-container">
-                <img
-                  class="sidePanel-logos"
-                  src="assets/horizontal-nav/assign-user.svg"
-                />
-                <p class="sidePanel-title">Access Rights</p>
-
-                <div class="pseudo-side-bar"></div>
+            <div class="side-panel-section-selector">
+              <div class="side-panel-header-container">
+                <div class="svg-container">
+                  <img
+                    src="assets/horizontal-nav/assign-user-black.svg"
+                    alt=""
+                    class="svg-image svg-black"
+                  />
+                  <img
+                    src="assets/horizontal-nav/assign-user-red.svg"
+                    alt=""
+                    class="svg-image svg-red"
+                  />
+                </div>
+                <p class="side-panel-title">Access Rights</p>
               </div>
             </div>
           </div>
         </div>
         <!-- Update -->
-        <div class="sidePanel-update-box">
-          <p class="sidePanel-update-box-heading">Install new update 2.3.1A</p>
-          <p class="sidePanel-update-box-desc">
+        <div class="side-panel-update-box">
+          <p class="side-panel-update-box-heading">Install new update 2.3.1A</p>
+          <p class="side-panel-update-box-desc">
             Allow to launch the new update for the AD application
           </p>
-          <div class="sidePanel-update-box-btn-container">
+          <div class="side-panel-update-box-btn-container">
             <button class="update-btn dismiss">Dismiss</button>
             <button class="update-btn accept">Accept</button>
           </div>
@@ -115,7 +153,6 @@
       </div>
 
       <!-- MainPanel -->
-
       <div class="main-panel">
         <!-- Search Header -->
         <div class="header-search">
@@ -182,33 +219,33 @@
             class="filter-icon"
             alt="filter"
           />
-          <div class="filter-alphabets">
-            <div>A</div>
-            <div>B</div>
-            <div>C</div>
-            <div>D</div>
-            <div>E</div>
-            <div>F</div>
-            <div>G</div>
-            <div>H</div>
-            <div>I</div>
-            <div>J</div>
-            <div>K</div>
-            <div>L</div>
-            <div>M</div>
-            <div>N</div>
-            <div>O</div>
-            <div>P</div>
-            <div>Q</div>
-            <div>R</div>
-            <div>S</div>
-            <div>T</div>
-            <div>U</div>
-            <div>V</div>
-            <div>W</div>
-            <div>X</div>
-            <div>Y</div>
-            <div>Z</div>
+          <div class="filter-alphabets flex">
+            <button>A</button>
+            <button>B</button>
+            <button>C</button>
+            <button>D</button>
+            <button>E</button>
+            <button>F</button>
+            <button>G</button>
+            <button>H</button>
+            <button>I</button>
+            <button>J</button>
+            <button>K</button>
+            <button>L</button>
+            <button>M</button>
+            <button>N</button>
+            <button>O</button>
+            <button>P</button>
+            <button>Q</button>
+            <button>R</button>
+            <button>S</button>
+            <button>T</button>
+            <button>U</button>
+            <button>V</button>
+            <button>W</button>
+            <button>X</button>
+            <button>Y</button>
+            <button>Z</button>
           </div>
         </div>
 
@@ -234,14 +271,18 @@
             </button>
           </div>
 
-          <div class="filter-options-process">
-            <button class="filter-options-reset">Reset</button>
-            <button class="filter-options-apply">Apply</button>
+          <div>
+            <button class="filter-options-btn filter-options-reset">
+              Reset
+            </button>
+            <button class="filter-options-btn filter-options-apply">
+              Apply
+            </button>
           </div>
         </div>
 
         <!-- Employee Table -->
-        
+
         <div class="employee-table">
           <div class="employee-table-header flex">
             <div class="employee-table-header-del flex">
@@ -257,7 +298,7 @@
             </div>
           </div>
 
-          <div class="employee-row-heading">
+          <div class="employee-table-rows employee-row-heading">
             <div class="employee-table-row checkbox">
               <input type="checkbox" name="check" id="" />
             </div>
@@ -513,120 +554,8 @@
               <div><p class="employee-table-row-data">12/03/2023</p></div>
               <div><p class="employee-table-row-data">...</p></div>
             </div>
-
-            <div class="employee-table-rows">
-              <div class="employee-table-row checkbox">
-                <input type="checkbox" name="check" id="" />
-              </div>
-              <div class="table-user">
-                <img src="assets/user-profile-1.png" alt="user-profile-pic" />
-                <div>
-                  <p class="user-profile-name">Edgar Jones</p>
-                  <p class="user-profile-email">edgar@tezo.com</p>
-                </div>
-              </div>
-              <div><p class="employee-table-row-data">Hyderabad</p></div>
-              <div><p class="employee-table-row-data">Product Engg</p></div>
-              <div>
-                <p class="employee-table-row-data">Full-Stack Developer</p>
-              </div>
-              <div><p class="employee-table-row-data">TZ002341</p></div>
-              <div><button class="active-btn">Active</button></div>
-              <div><p class="employee-table-row-data">12/03/2023</p></div>
-              <div><p class="employee-table-row-data">...</p></div>
-            </div>
-
-            <div class="employee-table-rows">
-              <div class="employee-table-row checkbox">
-                <input type="checkbox" name="check" id="" />
-              </div>
-              <div class="table-user">
-                <img src="assets/user-profile-2.png" alt="user-profile-pic" />
-                <div>
-                  <p class="user-profile-name">Edgar Jones</p>
-                  <p class="user-profile-email">edgar@tezo.com</p>
-                </div>
-              </div>
-              <div><p class="employee-table-row-data">Hyderabad</p></div>
-              <div><p class="employee-table-row-data">Product Engg</p></div>
-              <div>
-                <p class="employee-table-row-data">Full-Stack Developer</p>
-              </div>
-              <div><p class="employee-table-row-data">TZ002341</p></div>
-              <div><button class="active-btn">Active</button></div>
-              <div><p class="employee-table-row-data">12/03/2023</p></div>
-              <div><p class="employee-table-row-data">...</p></div>
-            </div>
-
-            <div class="employee-table-rows">
-              <div class="employee-table-row checkbox">
-                <input type="checkbox" name="check" id="" />
-              </div>
-              <div class="table-user">
-                <img src="assets/user-profile-3.png" alt="user-profile-pic" />
-                <div>
-                  <p class="user-profile-name">Edgar Jones</p>
-                  <p class="user-profile-email">edgar@tezo.com</p>
-                </div>
-              </div>
-              <div><p class="employee-table-row-data">Hyderabad</p></div>
-              <div><p class="employee-table-row-data">Product Engg</p></div>
-              <div>
-                <p class="employee-table-row-data">Full-Stack Developer</p>
-              </div>
-              <div><p class="employee-table-row-data">TZ002341</p></div>
-              <div><button class="active-btn">Active</button></div>
-              <div><p class="employee-table-row-data">12/03/2023</p></div>
-              <div><p class="employee-table-row-data">...</p></div>
-            </div>
-
-            <div class="employee-table-rows">
-              <div class="employee-table-row checkbox">
-                <input type="checkbox" name="check" id="" />
-              </div>
-              <div class="table-user">
-                <img src="assets/user-profile-4.png" alt="user-profile-pic" />
-                <div>
-                  <p class="user-profile-name">Edgar Jones</p>
-                  <p class="user-profile-email">edgar@tezo.com</p>
-                </div>
-              </div>
-              <div><p class="employee-table-row-data">Hyderabad</p></div>
-              <div><p class="employee-table-row-data">Product Engg</p></div>
-              <div>
-                <p class="employee-table-row-data">Full-Stack Developer</p>
-              </div>
-              <div><p class="employee-table-row-data">TZ002341</p></div>
-              <div><button class="active-btn">Active</button></div>
-              <div><p class="employee-table-row-data">12/03/2023</p></div>
-              <div><p class="employee-table-row-data">...</p></div>
-            </div>
-
-            <div class="employee-table-rows">
-              <div class="employee-table-row checkbox">
-                <input type="checkbox" name="check" id="" />
-              </div>
-              <div class="table-user">
-                <img src="assets/user-profile-5.png" alt="user-profile-pic" />
-                <div>
-                  <p class="user-profile-name">Edgar Jones</p>
-                  <p class="user-profile-email">edgar@tezo.com</p>
-                </div>
-              </div>
-              <div><p class="employee-table-row-data">Hyderabad</p></div>
-              <div><p class="employee-table-row-data">Product Engg</p></div>
-              <div>
-                <p class="employee-table-row-data">Full-Stack Developer</p>
-              </div>
-              <div><p class="employee-table-row-data">TZ002341</p></div>
-              <div><button class="active-btn">Active</button></div>
-              <div><p class="employee-table-row-data">12/03/2023</p></div>
-              <div><p class="employee-table-row-data">...</p></div>
-            </div>
           </div>
         </div>
-
-        
       </div>
     </div>
   </body>

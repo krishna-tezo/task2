@@ -3,16 +3,19 @@
   font-weight: 400;
   opacity: 90%;
 }
+
 .employee-header-content-desc {
   font-size: 1rem;
   margin: 3% 0%;
   opacity: 70%;
 }
+
 .role-desc-heading {
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 1rem;
 }
+
 .role-desc-content {
   font-size: 1rem;
   opacity: 90%;
@@ -20,12 +23,13 @@
   color: #4c5c72;
 }
 
-/* Roles Card */
 
+/* Roles Card */
 .roles-card{
-    height: 16rem;
-    padding: 0% 10%;
+  height: 15.5rem;
+  padding: 0% 10%;
 }
+
 .role-profile-details {
   flex-direction: column;
 }
@@ -43,6 +47,7 @@
     font-weight: 500;
     margin-left: 0.5rem 
 }
+
 .profile-detail-postion{
     margin-left: 0.5rem 
 }

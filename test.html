@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keep Element Active After Click (CSS Only)</title>
+<style>
+    /* CSS styles for demonstration purposes */
+    .button {
+        padding: 10px 20px;
+        background-color: blue;
+        color: white;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    .button:target {
+        background-color: red; /* Apply desired active style */
+    }
+</style>
 </head>
 <body>
-    <img src="assets/temp.svg" alt="">
+
+<a href="" class="button" id="myButton">Click me</a>
+
 </body>
 </html>

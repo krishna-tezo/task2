@@ -21,9 +21,11 @@
     height: calc(90% - 240px);
     overflow-x: hidden;
 }
+
 .roles-card{
     height: 13rem;
 }
+
 .roles-card-section::-webkit-scrollbar{
     width: 3px;
     color: red;
@@ -46,39 +48,94 @@
 .roles-card > div{
     margin: 1rem;
 }
+
 .roles-card-header{
     margin-top: 8%;
     justify-content: space-between;
 }
+
+.roles-card-header button{
+    background-color: white;
+    border: none;
+}
+
 .roles-card-header-title{
     font-size: 1.1rem;
     font-weight: 700;
     font-family: sans-serif;
 }
+
 .roles-card-content{
     display: flex;
     flex-direction: column;
-
 }
+
 .roles-card-content > div{
     margin: 1.5% 0%;
 }
+
 .roles-card-content p{
     color: #4c5c72;
     font-weight: 500;
     opacity: 90%;
 }
+
 .roles-card-content-div{
+    position: relative;
     justify-content: space-between;
 }
+
 .roles-card-bottom{
     justify-content: flex-end;
 }
+
 .roles-card-bottom p{
     font-family: sans-serif;
     font-size: 0.9rem;
+    margin-right: 1rem;
+    opacity: 80%;
 }
-.roles-card-bottom img{
-    margin-left: 0.6rem;
-    
+
+.roles-card-total-employees-card{
+    position: absolute;
+    right: 23%;
+    top: -15%; 
+}
+
+.profile-img{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.profile-img-1{
+    left: 0px;
+}
+
+.profile-img-2{
+    left: 10px;
+}
+
+.profile-img-3{
+    left: 20px;
+}
+
+.profile-img-4{
+    left: 30px;
+}
+
+.profile-remaining-count{
+    justify-content: center;
+    position: absolute;
+    left: 40px;
+    font-size: 0.45rem;
+    background-color: rgb(245, 245, 245);
+    border-radius: 50%;
+    border: 1px solid white;
+    color: gray;
+    font-weight: 800;
+    opacity: 100%;
+    width: 25px;
+    height: 25px;
 }
