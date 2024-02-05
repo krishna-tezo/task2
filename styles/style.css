@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Work Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
@@ -45,7 +45,7 @@ input[type="checkbox"] {
   position: relative;
   justify-content: space-between;
   box-shadow: 10px 0px 25px -35px;
-  height: 100vh;
+  height: 96vh;
 }
 
 .side-panel-collapse-btn {
@@ -182,7 +182,7 @@ input[type="checkbox"] {
 /* MainPanel */
 .main-panel {
   margin: 1% 2%;
-  height: 99vh;
+  height: 96vh;
 }
 
 .header-search {
@@ -251,7 +251,7 @@ input[type="checkbox"] {
 
 /* Employees Header */
 .employees-header {
-  margin: 1.5% 0% 1% 0%;
+  margin: 1% 0% 1% 0%;
   align-items: center;
   display: flex;
   justify-content: space-between;

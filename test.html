@@ -1,26 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Keep Element Active After Click (CSS Only)</title>
-<style>
-    /* CSS styles for demonstration purposes */
-    .button {
-        padding: 10px 20px;
-        background-color: blue;
-        color: white;
-        cursor: pointer;
-        text-decoration: none;
-    }
-    .button:target {
-        background-color: red; /* Apply desired active style */
-    }
-</style>
-</head>
-<body>
+<html>
+  <head>
+    <style>
+      table tr {
+        border: 1px solid green;
+      }
+      tr {
+        border: 1px solid green;
+      }
 
-<a href="" class="button" id="myButton">Click me</a>
+      #table1 {
+        border-collapse: separate;
+      }
 
-</body>
+      #table2 {
+        height: 30px;
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>border-collapse: separate (default):</h2>
+    <table id="table1">
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+      </tr>
+      <tr>
+        <td>Peter</td>
+        <td>Griffin</td>
+      </tr>
+      <tr>
+        <td>Lois</td>
+        <td>Griffin</td>
+      </tr>
+    </table>
+
+    <h2>border-collapse: collapse:</h2>
+    <!-- <div class="my-div" style="height: 900px; overflow: scroll;"> -->
+    <table id="table2" style="height: 900px;">
+        <tr style="position: sticky">
+          <th>Firstname</th>
+          <th>Lastname</th>
+        </tr>
+        <tr>
+          <td>Peter</td>
+          <td>Griffin</td>
+        </tr>
+        <tr>
+          <td>Lois</td>
+          <td>Griffin</td>
+        </tr>
+      <!-- </div> -->
+    </table>
+  </body>
 </html>
