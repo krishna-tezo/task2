@@ -33,6 +33,19 @@
   color: white;
 }
 
+.filter-alphabets button.active{
+  background-color: red;
+  opacity: 100%;
+  color: white;
+}
+
+.filter-alphabets button.not-allowed{
+  background-color: rgba(128, 128, 128, 0.525);
+  opacity: 10%;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 
 /* Employee Table */
 
@@ -88,7 +101,6 @@
   border: 1px solid rgba(128, 128, 128, 0.3);
   border-left: none;
   border-right: none;
-
 }
 
 .employee-rows-section::-webkit-scrollbar {
@@ -136,8 +148,7 @@
 }
 
 .user-profile-name,
-.user-profile-email,
-.active-btn {
+.user-profile-email{
   font-weight: 500;
 }
 
@@ -165,6 +176,10 @@ th {
   border-radius: 5px;
   color: green;
   background-color: #e4f8e8;
+}
+.status-btn.inactive{
+  background-color:#ff9494;
+  color: black; 
 }
 
 .employee-table-row:hover {

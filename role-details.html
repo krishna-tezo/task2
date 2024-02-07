@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Roles</title>
-    <link rel="stylesheet" href="styles/style.css"/>
-    <link rel="stylesheet" href="styles/roles.css"/>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/roles.css" />
     <link rel="stylesheet" href="styles/role-details.css" />
 
     <!-- Importing Icons -->
@@ -21,35 +21,29 @@
     <div class="main-container">
       <!-- Side Panel -->
       <div class="side-panel">
-        <img
-          src="assets/handle.png"
-          class="side-panel-collapse-btn"
-          alt="collapse btn"
-        />
         <!-- Logo-->
+        <div class="side-panel-header">
+          <img src="assets/tezo-logo.svg"  class="logo-img" alt="tezo-logo"/>
+        </div>
 
         <div class="side-panel-content">
-          <div class="side-panel-header">
-            <img src="assets/tezo-logo.svg" alt="tezo-logo" />
-          </div>
-
+          
           <!-- All -->
           <div class="side-panel-section">
-            <div class="side-panel-heading">ALL</div>
+            <div class="side-panel-heading">
+              ALL
+              <hr class="side-panel-bar" />
+            </div>
 
             <div class="side-panel-section-selector">
               <div class="side-panel-header-container">
                 <div class="svg-container">
                   <img
                     src="assets/horizontal-nav/dashboard-black.svg"
-                    alt="dashboard-icon"
+                    alt=""
                     class="svg-image svg-black"
                   />
-                  <img
-                    src="assets/horizontal-nav/dashboard-red.svg"
-                    alt="dashboard-icon"
-                    class="svg-image svg-red"
-                  />
+
                 </div>
                 <p class="side-panel-title">Dashboard</p>
               </div>
@@ -57,21 +51,16 @@
 
             <div class="side-panel-section-selector">
               <a href="index.html">
-                <div class="side-panel-header-container ">
+                <div class="side-panel-header-container">
                   <div class="svg-container">
                     <img
                       src="assets/horizontal-nav/employees-black.svg"
-                      alt="employees-icon"
+                      alt=""
                       class="svg-image svg-black"
                     />
-                    <img
-                      src="assets/horizontal-nav/employees-red.svg"
-                      alt="employees-icon"
-                      class="svg-image svg-red"
-                    />
+                    
                   </div>
                   <p class="side-panel-title">Employees</p>
-
                 </div>
               </a>
             </div>
@@ -79,43 +68,38 @@
 
           <!-- Roles -->
           <div class="side-panel-section">
-            <div class="side-panel-heading">ROLE / USER MANAGEMENT</div>
+            <div class="side-panel-heading">
+              <hr class="side-panel-bar" />
+              ROLE / USER MANAGEMENT
+            </div>
             <div class="side-panel-section-selector">
               <a href="roles.html">
                 <div class="side-panel-header-container">
                   <div class="svg-container">
                     <img
                       src="assets/horizontal-nav/roles-black.svg"
-                      alt="roles-icon"
+                      alt=""
                       class="svg-image svg-black"
-                    />
-                    <img
-                      src="assets/horizontal-nav/roles-red.svg"
-                      alt="roles-icon"
-                      class="svg-image svg-red"
                     />
                   </div>
                   <p class="side-panel-title">Roles</p>
-
+                  <i class="fa-solid fa-chevron-right side-panel-logo-right"></i>
                 </div>
               </a>
             </div>
             <div class="side-panel-section-selector">
               <a href="role-details.html">
-                <div class="side-panel-header-container active-selector">
+                <div class="side-panel-header-container  active-selector">
                   <div class="svg-container">
                     <img
                       src="assets/horizontal-nav/assign-user-black.svg"
-                      alt="role-details-icon"
+                      alt=""
                       class="svg-image svg-black"
                     />
-                    <img
-                      src="assets/horizontal-nav/assign-user-red.svg"
-                      alt="role-details-ico"
-                      class="svg-image svg-red"
-                    />
+
                   </div>
-                  <p class="side-panel-title">Role Details</p>
+                  <p class="side-panel-title ">Role Details</p>
+                  <i class="fa-solid fa-chevron-right side-panel-logo-right"></i>
                   <div class="pseudo-side-bar"></div>
 
                 </div>
@@ -127,16 +111,13 @@
                 <div class="svg-container">
                   <img
                     src="assets/horizontal-nav/assign-user-black.svg"
-                    alt="access-rights-icon"
+                    alt=""
                     class="svg-image svg-black"
                   />
-                  <img
-                    src="assets/horizontal-nav/assign-user-red.svg"
-                    alt="access-rights-icon"
-                    class="svg-image svg-red"
-                  />
+
                 </div>
                 <p class="side-panel-title">Access Rights</p>
+                <i class="fa-solid fa-chevron-right side-panel-logo-right"></i>
               </div>
             </div>
           </div>
@@ -157,6 +138,12 @@
       <!-- MainPanel -->
 
       <div class="main-panel">
+        <img
+          src="assets/handle.png"
+          class="side-panel-collapse-btn"
+          alt="collapse btn"
+          onclick="sidePanelToggle()"
+        />
         <!-- Search Header -->
         <div class="header-search">
           <div class="header-search-section flex">
@@ -165,11 +152,7 @@
               class="header-search-search-icon"
               alt="search"
             />
-            <input
-              type="text"
-              class="header-search-box"
-              placeholder="Search"
-            />
+            <input type="text" class="header-search-box" placeholder="Search" />
           </div>
           <div class="header-search-icons flex">
             <img src="assets/vertical-nav/language.svg" alt="lang" />
@@ -321,7 +304,9 @@
 
               <div>
                 <p class="profile-detail-name">Eleanor Pena</p>
-                <p class="profile-detail-postion">Senior Interaction Designer</p>
+                <p class="profile-detail-postion">
+                  Senior Interaction Designer
+                </p>
               </div>
             </div>
 
@@ -444,7 +429,9 @@
 
               <div>
                 <p class="profile-detail-name">Dianne Russell</p>
-                <p class="profile-detail-postion">Full Stack Software Engineer</p>
+                <p class="profile-detail-postion">
+                  Full Stack Software Engineer
+                </p>
               </div>
             </div>
 
@@ -477,5 +464,6 @@
         </div>
       </div>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>

@@ -1,19 +1,18 @@
   /* Employee Table */
-  .employee-table {
+  .employee-table-section {
     margin: 1.5% 0%;
     box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.205);
     border-radius: 10px;
-    border-collapse: collapse;
   }
   
-  .employee-table-header {
+  .employee-table-section-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 0.3% 2%;
   }
   
-  .employee-table-header-del {
+  .employee-table-section-header-del {
     width: 100%;
   }
   
@@ -30,69 +29,69 @@
     background-color: #f44848;
   }
   
-  .employee-table-rows-section {
-    width: 100%;
-    height: calc(100vh-240px);
-    overflow: scroll;
-    overflow-x: hidden;
-    position: relative;
+  .employee-rows-section {
+    height: calc(100vh - 450px);
+    overflow-y: auto;
   }
   
-  .employee-table-rows-section::-webkit-scrollbar {
+  .employee-table {
+    width: 100%;
+    font-size: 12px;
+    font-weight: 500;
+    border-collapse: collapse;
+  }
+  
+  .employee-table-row th,
+  .employee-table-row td {
+    white-space: nowrap;
+    padding: 10px 20px;
+  }
+  
+  .employee-table-row {
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    border-left: none;
+    border-right: none;
+  
+  }
+  
+  .employee-rows-section::-webkit-scrollbar {
+    height: 3px;
     width: 3px;
     color: red;
   }
   
-  .employee-table-rows-section::-webkit-scrollbar-track {
+  .employee-rows-section::-webkit-scrollbar-track {
     background: transparent;
+    margin-top: 3.125rem;
   }
   
-  .employee-table-rows-section::-webkit-scrollbar-thumb {
+  .employee-rows-section::-webkit-scrollbar-thumb {
     background: red;
     border-radius: 10px;
+    display: flex;
   }
   
-  .employee-table-rows {
-    padding: 1% 1% 1% 3%;
-    border: 1px solid rgba(128, 128, 128, 0.3);
-    border-left: none;
-    border-right: none;
-    justify-content: space-between;
-  }
-  
-  .employee-row-heading {
-    text-align: left;
-    top: 0%;
-    left: 0%;
+  .employee-table thead{
     position: sticky;
-    padding: 1.5% 1% 1.5% 3%;
-    background-color: #fffcfc;
+    top: 0;
+    font-size: 0.8rem;
+    font-weight: 100;
+    opacity: 100%;
+    height: 3.125rem;
+    text-align: left;
+    background-color: rgba(250,250,252,1);
+    z-index: 2;
+    box-shadow:0 -1px #ccc,0 1px #ccc;
   }
   
-.employee-table-rows-section tr{
-   padding: 5%;
-}
-td{
-    padding: 1% 0%;
-}
   
   .table-user img {
     margin-right: 1rem;
     border-radius: 50%;
   }
   
-  .employee-table-rows-section tr th {
-    font-size: 0.8rem;
-    font-weight: 600;
-    opacity: 70%;
-  }
-  
-  .employee-table-rows th input {
+  .employee-table-row input {
     scale: 1.4;
-  }
-  
-  .employee-table-row {
-    display: flex;
   }
   
   .table-user {
@@ -100,22 +99,30 @@ td{
   }
   
   .user-profile-name,
-  .employee-table-row-data,
-  .user-profile-email .active-btn {
+  .user-profile-email,
+  .active-btn {
     font-weight: 500;
   }
   
-  .table-user img{
+  th {
+    text-align: left;
+    font-weight: 600;
+    opacity: 100%;
+    color: #415682;
+  }
+  
+  .table-user img {
     width: 36px;
     height: 36px;
   }
   
   .user-profile-email {
     font-size: 0.9rem;
-    opacity: 60%;
+    color: #5b6883;
+    opacity: 90%;
   }
   
-  .active-btn {
+  .status-btn {
     padding: 7.5% 15%;
     border: none;
     border-radius: 5px;
@@ -123,7 +130,8 @@ td{
     background-color: #e4f8e8;
   }
   
-  .employee-table-rows:hover {
+  .employee-table-row:hover {
     background-color: #fff4f4;
     cursor: pointer;
+    border-radius: 25px;
   }

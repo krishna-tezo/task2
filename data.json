@@ -1,0 +1,149 @@
+{
+    "employees": [
+      {
+        "userProfile": {
+          "link": "assets/user-profile-1.png",
+          "firstName": "Edgar",
+          "lastName": "Jones",
+          "email": "edgar@tezo.com"
+        },
+        "empNo": "TZ002341",
+        "dob": "2002-02-12",
+        "mobNumber": "9999999999",
+        "managerName": "Edgar Holmes",
+        "projectName": "UI/UX",
+        "roleId": "123",
+        "status": true,
+        "joinDate": "2023-03-12",
+        "role": {
+          "id": "123",
+          "roleName": "Full-Stack developer",
+          "department": "Product Engg",
+          "description": "This is description",
+          "location": "Hyderabad",
+          "employees": ["employee-1", "employee-2"]
+        }
+      },
+      {
+        "userProfile": {
+          "link": "assets/user-profile-2.png",
+          "firstName": "Badgar",
+          "lastName": "Smith",
+          "email": "alice@tezo.com"
+        },
+        "empNo": "TZ002342",
+        "dob": "1990-05-18",
+        "mobNumber": "8888888888",
+        "managerName": "John Doe",
+        "projectName": "Backend Development",
+        "roleId": "456",
+        "status": false,
+        "joinDate": "2022-08-25",
+        "role": {
+          "id": "456",
+          "roleName": "Backend Developer",
+          "department": "Product Engg",
+          "description": "Backend development role",
+          "location": "Bangalore",
+          "employees": ["employee-3", "employee-4"]
+        }
+      },
+      {
+        "userProfile": {
+          "link": "assets/user-profile-3.png",
+          "firstName": "Badger",
+          "lastName": "Johnson",
+          "email": "sophia@tezo.com"
+        },
+        "empNo": "TZ002343",
+        "dob": "1985-09-30",
+        "mobNumber": "7777777777",
+        "managerName": "Emily Brown",
+        "projectName": "Data Analysis",
+        "roleId": "789",
+        "status": false,
+        "joinDate": "2021-11-10",
+        "role": {
+          "id": "789",
+          "roleName": "Talent Acquisition",
+          "department": "HR",
+          "description": "Analyzing data for insights",
+          "location": "Hyderabad",
+          "employees": ["employee-5", "employee-6"]
+        }
+      },
+      {
+        "userProfile": {
+          "link": "assets/user-profile-4.png",
+          "firstName": "Cadger",
+          "lastName": "Williams",
+          "email": "michael@tezo.com"
+        },
+        "empNo": "TZ002344",
+        "dob": "1993-07-22",
+        "mobNumber": "6666666666",
+        "managerName": "David Wilson",
+        "projectName": "Mobile App Development",
+        "roleId": "246",
+        "status": true,
+        "joinDate": "2020-04-05",
+        "role": {
+          "id": "246",
+          "roleName": "HR Manager",
+          "department": "HR",
+          "description": "Developing mobile applications",
+          "location": "Hyderabad",
+          "employees": ["employee-7", "employee-8"]
+        }
+      },
+      {
+        "userProfile": {
+          "link": "assets/user-profile-5.png",
+          "firstName": "Emma",
+          "lastName": "Brown",
+          "email": "emma@tezo.com"
+        },
+        "empNo": "TZ002345",
+        "dob": "1988-12-15",
+        "mobNumber": "5555555555",
+        "managerName": "Daniel White",
+        "projectName": "Frontend Development",
+        "roleId": "135",
+        "status": true,
+        "joinDate": "2022-01-20",
+        "role": {
+          "id": "135",
+          "roleName": "HR Executive",
+          "department": "HR",
+          "description": "Creating user interfaces",
+          "location": "Bangalore",
+          "employees": ["employee-9", "employee-10"]
+        }
+      },
+      {
+        "userProfile": {
+          "link": "assets/user-profile-6.png",
+          "firstName": "Olivia",
+          "lastName": "Martinez",
+          "email": "olivia@tezo.com"
+        },
+        "empNo": "TZ002346",
+        "dob": "1996-04-28",
+        "mobNumber": "4444444444",
+        "managerName": "Sarah Johnson",
+        "projectName": "Database Management",
+        "roleId": "579",
+        "status": false,
+        "joinDate": "2023-07-15",
+        "role": {
+          "id": "579",
+          "roleName": "Full-Stack developer",
+          "department": "Product Engg",
+          "description": "Managing databases",
+          "location": "Bangalore",
+          "employees": ["employee-11", "employee-12"]
+        }
+      }
+    ]
+  }
+  

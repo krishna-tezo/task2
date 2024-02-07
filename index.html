@@ -17,37 +17,29 @@
     />
   </head>
   <body>
-    <div class="main-container">
+    <div class="main-container" id="main-container">
       <!-- Side Panel -->
       <div class="side-panel">
-        <img
-          src="assets/handle.png"
-          class="side-panel-collapse-btn"
-          alt="collapse btn"
-        />
         <!-- Logo-->
+        <div class="side-panel-header">
+          <img src="assets/tezo-logo.svg" class="logo-img" alt="tezo-logo" />
+        </div>
 
         <div class="side-panel-content">
-          <div class="side-panel-header">
-            <img src="assets/tezo-logo.svg" alt="tezo-logo" />
-          </div>
-
           <!-- All -->
           <div class="side-panel-section">
-            <div class="side-panel-heading">ALL</div>
+            <div class="side-panel-heading">
+              ALL
+              <hr class="side-panel-bar" />
+            </div>
 
             <div class="side-panel-section-selector">
-              <div class="side-panel-header-container">
+              <div class="side-panel-header-container active">
                 <div class="svg-container">
                   <img
                     src="assets/horizontal-nav/dashboard-black.svg"
                     alt=""
                     class="svg-image svg-black"
-                  />
-                  <img
-                    src="assets/horizontal-nav/dashboard-red.svg"
-                    alt=""
-                    class="svg-image svg-red"
                   />
                 </div>
                 <p class="side-panel-title">Dashboard</p>
@@ -63,11 +55,6 @@
                       alt=""
                       class="svg-image svg-black"
                     />
-                    <img
-                      src="assets/horizontal-nav/employees-red.svg"
-                      alt=""
-                      class="svg-image svg-red"
-                    />
                   </div>
                   <p class="side-panel-title">Employees</p>
 
@@ -79,7 +66,10 @@
 
           <!-- Roles -->
           <div class="side-panel-section">
-            <div class="side-panel-heading">ROLE / USER MANAGEMENT</div>
+            <div class="side-panel-heading">
+              <hr class="side-panel-bar" />
+              ROLE / USER MANAGEMENT
+            </div>
             <div class="side-panel-section-selector">
               <a href="roles.html">
                 <div class="side-panel-header-container">
@@ -89,13 +79,11 @@
                       alt=""
                       class="svg-image svg-black"
                     />
-                    <img
-                      src="assets/horizontal-nav/roles-red.svg"
-                      alt=""
-                      class="svg-image svg-red"
-                    />
                   </div>
                   <p class="side-panel-title">Roles</p>
+                  <i
+                    class="fa-solid fa-chevron-right side-panel-logo-right"
+                  ></i>
                 </div>
               </a>
             </div>
@@ -108,13 +96,11 @@
                       alt=""
                       class="svg-image svg-black"
                     />
-                    <img
-                      src="assets/horizontal-nav/assign-user-red.svg"
-                      alt=""
-                      class="svg-image svg-red"
-                    />
                   </div>
                   <p class="side-panel-title">Role Details</p>
+                  <i
+                    class="fa-solid fa-chevron-right side-panel-logo-right"
+                  ></i>
                 </div>
               </a>
             </div>
@@ -127,13 +113,9 @@
                     alt=""
                     class="svg-image svg-black"
                   />
-                  <img
-                    src="assets/horizontal-nav/assign-user-red.svg"
-                    alt=""
-                    class="svg-image svg-red"
-                  />
                 </div>
                 <p class="side-panel-title">Access Rights</p>
+                <i class="fa-solid fa-chevron-right side-panel-logo-right"></i>
               </div>
             </div>
           </div>
@@ -153,6 +135,12 @@
 
       <!-- MainPanel -->
       <div class="main-panel">
+        <img
+          src="assets/handle.png"
+          class="side-panel-collapse-btn"
+          alt="collapse btn"
+          onclick="sidePanelToggle()"
+        />
         <!-- Search Header -->
         <div class="header-search">
           <div class="header-search-section flex">
@@ -201,13 +189,13 @@
               roles.
             </div>
           </div>
-          <button class="employees-header-btn-export">
+          <button class="employees-header-btn-export" onclick="exportToCSV()">
             <img src="assets/interface/export.svg" alt="export" />
             <p>EXPORT</p>
           </button>
           <button class="employees-header-btn-add-employee">
             <img src="assets/interface/add.svg" alt="" />
-            <p>ADD EMPLOYEE</p>
+            <a href="add-employee.html">ADD EMPLOYEE</a>
           </button>
         </div>
 
@@ -218,34 +206,7 @@
             class="filter-icon"
             alt="filter"
           />
-          <div class="filter-alphabets flex">
-            <button>A</button>
-            <button>B</button>
-            <button>C</button>
-            <button>D</button>
-            <button>E</button>
-            <button>F</button>
-            <button>G</button>
-            <button>H</button>
-            <button>I</button>
-            <button>J</button>
-            <button>K</button>
-            <button>L</button>
-            <button>M</button>
-            <button>N</button>
-            <button>O</button>
-            <button>P</button>
-            <button>Q</button>
-            <button>R</button>
-            <button>S</button>
-            <button>T</button>
-            <button>U</button>
-            <button>V</button>
-            <button>W</button>
-            <button>X</button>
-            <button>Y</button>
-            <button>Z</button>
-          </div>
+          <div class="filter-alphabets flex"></div>
         </div>
 
         <!-- Filters -->
@@ -254,36 +215,38 @@
             <div><p class="filter-options-title">Filter</p></div>
             <img src="assets/filter-sort.png" alt="" />
 
-            <button class="filter-options-btn">
-              Status
-              <i class="fa-solid fa-angle-down"></i>
-            </button>
+            <select class="filter-options-btn" name="filters" id="filters">
+              <option value="" hidden>Status</option>
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+            </select>
 
-            <button class="filter-options-btn">
-              Location
-              <i class="fa-solid fa-angle-down"></i>
-            </button>
+            <select class="filter-options-btn" name="filters" id="filter2">
+              <option value="" hidden>Location</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Bangalore">Bangalore</option>
+            </select>
 
-            <button class="filter-options-btn">
-              Department
-              <i class="fa-solid fa-angle-down"></i>
-            </button>
+            <select class="filter-options-btn" name="filters" id="filter3">
+              <option value="" hidden>Department</option>
+              <option value="Product Engg">Product Engg</option>
+              <option value="HR">HR</option>
+            </select>
+
+            
           </div>
 
           <div>
-            <button class="filter-options-btn filter-options-reset">
+            <button class="filter-options-btn filter-options-reset" onclick="resetFilter()">
               Reset
             </button>
-            <button class="filter-options-btn filter-options-apply">
+            <button class="filter-options-btn filter-options-apply" onclick="filterOptionsApply()">
               Apply
             </button>
           </div>
         </div>
 
         <!-- Employee Table -->
-
-        
-
         <div class="employee-table-section">
           <div class="employee-table-section-header flex">
             <div class="employee-table-section-header-del flex">
@@ -298,7 +261,6 @@
               <img src="assets/table-add.png" alt="table-add" />
             </div>
           </div>
-
           <div class="employee-rows-section">
             <table class="employee-table">
               <thead>
@@ -316,7 +278,8 @@
               </thead>
 
               <tbody class="employee-table-data">
-                <tr class="employee-table-row">
+                
+                <!-- <tr class="employee-table-row">
                   <td><input type="checkbox" name="check" /></td>
                   <td>
                     <div class="table-user">
@@ -325,22 +288,24 @@
                         alt="user-profile-pic"
                       />
                       <div>
-                        <p class="user-profile-name">Edgar Jones</p>
+                        <p class="user-profile-name">Adgar Jones</p>
                         <p class="user-profile-email">edgar@tezo.com</p>
                       </div>
                     </div>
                   </td>
-                  <td>Hyderabad</td>
+                  <td>Bangalore</td>
                   <td>Product Engg</td>
                   <td>Full-Stack Developer</td>
                   <td>TZ002341</td>
-                  <td><button class="status-btn">Active</button></td>
+                  <td>
+                    <div class="status-btn">Active</div>
+                  </td>
                   <td>12/03/2023</td>
                   <td>...</td>
                 </tr>
 
                 <tr class="employee-table-row">
-                  <td><input type="checkbox" name="check"/></td>
+                  <td><input type="checkbox" name="check" /></td>
                   <td>
                     <div class="table-user">
                       <img
@@ -348,7 +313,7 @@
                         alt="user-profile-pic"
                       />
                       <div>
-                        <p class="user-profile-name">Edgar Jones</p>
+                        <p class="user-profile-name">Badgar Jones</p>
                         <p class="user-profile-email">edgar@tezo.com</p>
                       </div>
                     </div>
@@ -357,13 +322,13 @@
                   <td>Product Engg</td>
                   <td>Full-Stack Developer</td>
                   <td>TZ002341</td>
-                  <td><button class="status-btn">Active</button></td>
+                  <td><div class="status-btn inactive">Inactive</div></td>
                   <td>12/03/2023</td>
                   <td>...</td>
                 </tr>
 
                 <tr class="employee-table-row">
-                  <td><input type="checkbox" name="check"/></td>
+                  <td><input type="checkbox" name="check" /></td>
                   <td>
                     <div class="table-user">
                       <img
@@ -371,22 +336,22 @@
                         alt="user-profile-pic"
                       />
                       <div>
-                        <p class="user-profile-name">Edgar Jones</p>
+                        <p class="user-profile-name">Badgar Jones</p>
                         <p class="user-profile-email">edgar@tezo.com</p>
                       </div>
                     </div>
                   </td>
                   <td>Hyderabad</td>
-                  <td>Product Engg</td>
+                  <td>HR</td>
                   <td>Full-Stack Developer</td>
                   <td>TZ002341</td>
-                  <td><button class="status-btn">Active</button></td>
+                  <td><div class="status-btn inactive">Inactive</div></td>
                   <td>12/03/2023</td>
                   <td>...</td>
                 </tr>
 
                 <tr class="employee-table-row">
-                  <td><input type="checkbox" name="check"/></td>
+                  <td><input type="checkbox" name="check" /></td>
                   <td>
                     <div class="table-user">
                       <img
@@ -394,22 +359,22 @@
                         alt="user-profile-pic"
                       />
                       <div>
-                        <p class="user-profile-name">Edgar Jones</p>
+                        <p class="user-profile-name">Cadgar Jones</p>
                         <p class="user-profile-email">edgar@tezo.com</p>
                       </div>
                     </div>
                   </td>
-                  <td>Hyderabad</td>
+                  <td>Bangalore</td>
                   <td>Product Engg</td>
                   <td>Full-Stack Developer</td>
                   <td>TZ002341</td>
-                  <td><button class="status-btn">Active</button></td>
+                  <td><div class="status-btn">Active</div></td>
                   <td>12/03/2023</td>
                   <td>...</td>
                 </tr>
 
                 <tr class="employee-table-row">
-                  <td><input type="checkbox" name="check"/></td>
+                  <td><input type="checkbox" name="check" /></td>
                   <td>
                     <div class="table-user">
                       <img
@@ -417,22 +382,22 @@
                         alt="user-profile-pic"
                       />
                       <div>
-                        <p class="user-profile-name">Edgar Jones</p>
+                        <p class="user-profile-name">Dedgar Jones</p>
                         <p class="user-profile-email">edgar@tezo.com</p>
                       </div>
                     </div>
                   </td>
                   <td>Hyderabad</td>
-                  <td>Product Engg</td>
+                  <td>HR</td>
                   <td>Full-Stack Developer</td>
                   <td>TZ002341</td>
-                  <td><button class="status-btn">Active</button></td>
+                  <td><div class="status-btn inactive">Inactive</div></td>
                   <td>12/03/2023</td>
                   <td>...</td>
                 </tr>
 
                 <tr class="employee-table-row">
-                  <td><input type="checkbox" name="check"/></td>
+                  <td><input type="checkbox" name="check" /></td>
                   <td>
                     <div class="table-user">
                       <img
@@ -445,17 +410,17 @@
                       </div>
                     </div>
                   </td>
-                  <td>Hyderabad</td>
+                  <td>Bangalore</td>
                   <td>Product Engg</td>
                   <td>Full-Stack Developer</td>
                   <td>TZ002341</td>
-                  <td><button class="status-btn">Active</button></td>
+                  <td><div class="status-btn">Active</div></td>
                   <td>12/03/2023</td>
                   <td>...</td>
                 </tr>
 
                 <tr class="employee-table-row">
-                  <td><input type="checkbox" name="check"/></td>
+                  <td><input type="checkbox" name="check" /></td>
                   <td>
                     <div class="table-user">
                       <img
@@ -463,7 +428,7 @@
                         alt="user-profile-pic"
                       />
                       <div>
-                        <p class="user-profile-name">Edgar Jones</p>
+                        <p class="user-profile-name">Fedgar Jones</p>
                         <p class="user-profile-email">edgar@tezo.com</p>
                       </div>
                     </div>
@@ -472,15 +437,16 @@
                   <td>Product Engg</td>
                   <td>Full-Stack Developer</td>
                   <td>TZ002341</td>
-                  <td><button class="status-btn">Active</button></td>
+                  <td><div class="status-btn">Active</div></td>
                   <td>12/03/2023</td>
                   <td>...</td>
-                </tr>
+                </tr> -->
               </tbody>
             </table>
           </div>
         </div>
       </div>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
