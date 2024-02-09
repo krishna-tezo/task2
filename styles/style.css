@@ -378,6 +378,7 @@ input[type="checkbox"] {
 }
 
 .filter-options-btn{
+  
   opacity: 80%;
   background-color: white;
   font-weight: 500;
@@ -388,11 +389,13 @@ input[type="checkbox"] {
 }
 
 .filter-options-reset {
+  display: none;
   background-color: white;
   color: red;
 }
 
 .filter-options-apply {
+  display: none;
   margin-left: 1rem;
   background-color: #f44848;
   color: white;

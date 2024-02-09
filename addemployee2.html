@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Employee2</title>
+</head>
+<body>
+    <form action="/test.html" id="formData">
+        <input type="text" name="employeeName" id="employee-name">
+        <button id="submit-button">Submit</button>
+    </form>
+    <script>
+        const form = document.querySelector("#formData");
+        const btn=document.querySelector("#submit-button");
+        var employeeName=undefined;
+        btn.addEventListener('click', (e) => {
+            // prevent the form from submitting
+            e.preventDefault();
+
+            // show the form values
+            const formData = new FormData(form);
+            employeeName= (formData.get("employeeName"));
+            localStorage.setItem("newItem",employeeName);
+            window.close("addemployee2.html");
+        });
+    </script>
+</body>
+</html>

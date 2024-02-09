@@ -12,8 +12,6 @@ const headerContainer = document.querySelectorAll(
 );
 const pseudoSideBar = document.querySelector(".pseudo-side-bar");
 
-var tableData="";
-
 // Collapse
 var isCollapsed = false;
 function sidePanelToggle() {
@@ -44,55 +42,21 @@ function sidePanelToggle() {
   isCollapsed = !isCollapsed;
 }
 
-//Schema
-// var role = {
-//   id: "123",
-//   name: "Full-Stack developer",
-//   department: "dept-name",
-//   description: "This is description",
-//   location: "Hyderabad",
-//   employees: ["employee-1", "employee-2"]
-// };
-
-// var employee = {
-//   userProfile: {
-//     link: "assets/profile-pic-1.png",
-//     firstName: "Edgar",
-//     lastName: "Jones",
-//     email: "edgar@tezo.com",
-//   },
-//   empNo: "TZ002341",
-//   dob: new Date("2002-02-12"),
-//   mobNumber: "9999999999",
-//   managerName: "Edgar Holmes",
-//   projectName: "UI/UX",
-//   roleId: "123",
-//   status: true,
-//   joinDate: new Date("2023-03-12"),
-
-//   role: {
-//     id: "123",
-//     name: "Full-Stack developer",
-//     department: "dept-name",
-//     description: "This is description",
-//     location: "Hyderabad",
-//     employees: ["employee-1", "employee-2"],
-//   },
-// };
-
-
 // Populating the table with rows
 //Fetching data from JSON
-var data = "";
+var data = [];
 fetch("./data.json")
   .then((response) => response.json())
   .then((json) => {
-    data = json.employees;
-    populateTableData();
-    tableRows = document.querySelectorAll(".employee-table tbody tr");
+    if (!localStorage.getItem("employeesDetails")) {
+      localStorage.setItem("employeesDetails", JSON.stringify(json.employees));
+    }
+    data = localStorage.getItem("employeesDetails");
+    data = JSON.parse(data);
+    populateTableData(data);
   });
-  
-function populateTableData() {
+
+function populateTableData(data) {
   const tableBody = document.querySelector(".employee-table-data");
   for (let i = 0; i < data.length; i++) {
     var imgLink = data[i].userProfile.link;
@@ -115,7 +79,7 @@ function populateTableData() {
     const row = document.createElement("tr");
     row.classList.add("employee-table-row");
     row.innerHTML = `
-    <td><input type="checkbox" name="check" /></td>
+    <td><label><input type="checkbox" name="check" id="check-box" class="row-checkbox" onclick="displayDelete()"/></label> </td>
     <td>
         <div class="table-user">
           <img
@@ -134,9 +98,37 @@ function populateTableData() {
     <td>${empId}</td>
     <td><div class="status-btn">${status}</div></td>
     <td>${joinDt}</td>
-    <td>...</td>
+    <td>
+      <div class="ellipsis">
+        <div class="ellipsis-icon">
+          <i class="fa-solid fa-ellipsis"></i>
+        </div>
+        <div class="ellipsis-menu">
+          <div>View Details</div>
+          <div>Edit</div>
+          <div>Delete</div>
+        </div>
+      </div>
+    </td>
     `;
     tableBody.appendChild(row);
+  }
+}
+
+const ellipsis = document.querySelectorAll(".ellipsis");
+ellipsis.forEach((elp) => {
+  elp.addEventListener("click", showEllipsisMenu);
+});
+
+function showEllipsisMenu() {
+  this.children[1].classList.toggle("active");
+}
+
+function unpopulateTableData() {
+  const tableBody = document.querySelector(".employee-table-data");
+  //Delete all childs before
+  while (tableBody.hasChildNodes()) {
+    tableBody.removeChild(tableBody.firstChild);
   }
 }
 
@@ -154,73 +146,145 @@ for (let i = 1; i <= 26; i++) {
 //Filtering the rows
 const buttons = document.querySelectorAll(".filter-alphabets button");
 var isApplied = false;
+
 function filterNames(char, btn) {
+  unpopulateTableData();
+  let filteredData = [];
+  let data = JSON.parse(localStorage.getItem("employeesDetails"));
+
+  for (let employee of data) {
+    if (employee.userProfile.firstName[0] == char) {
+      filteredData.push(employee);
+    }
+  }
+
+  if (!isApplied) {
+    populateTableData(filteredData);
+  } else {
+    populateTableData(data);
+  }
+
+  isApplied = !isApplied;
   btn.classList.toggle("active");
   for (let button of buttons) {
     if (button !== btn) {
       button.classList.toggle("not-allowed");
     }
   }
-
-  for (let i = 0; i < tableRows.length; i++) {
-    const nameStartingLetter = data[i].userProfile.firstName[0];
-    if (nameStartingLetter != char) {
-      tableRows[i].classList.toggle("hide");
-    }
-  }
 }
-
-//Exporting to CSV
-// const tableData = document.querySelectorAll(".employee-table");
-
-// function exportToCSV(){
-//   let csv_data = [];
-//   for(let i=0; i<tableRows.length;i++){
-//     let cols = tableRows[i].querySelectorAll('td,th');
-//   }
-// }
 
 //Fliter options
-const filterSelect = document.getElementsByClassName("filter-options-btn");
-function resetFilter() {
-  filterSelect[0].selectedIndex = 0;
-  filterSelect[1].selectedIndex = 0;
-  filterSelect[2].selectedIndex = 0;
-  showAllRows();
-}
 
-function showAllRows() {
-  tableRows.forEach((row) => {
-    row.classList.remove("hide");
-  });
+//Hide Buttons
+const btnFilters = document.querySelectorAll(".filter-options-btn");
+const filterSelect = document.getElementsByClassName("filter-options-btn");
+filterSelect[0].onchange = () => {
+  console.log(filterSelect[0].value);
+  btnFilters[3].style.display = "inline-block";
+  btnFilters[4].style.display = "inline-block";
+};
+filterSelect[1].onchange = () => {
+  console.log(filterSelect[1].value);
+  btnFilters[3].style.display = "inline-block";
+  btnFilters[4].style.display = "inline-block";
+};
+filterSelect[2].onchange = () => {
+  console.log(filterSelect[2].value);
+  btnFilters[3].style.display = "inline-block";
+  btnFilters[4].style.display = "inline-block";
+};
+
+
+function filter(criteria, selectedOption, filteredData) {
+  var tempData = filteredData.slice();
+  var empData = undefined;
+  for (let employee of filteredData) {
+    if (criteria == "location") {
+      empData = employee["role"]["location"];
+    } else if (criteria == "department") {
+      empData = employee["role"]["department"];
+    } else {
+      empData = employee[criteria];
+      if (empData == false) {
+        empData = "Inactive";
+      } else {
+        empData = "Active";
+      }
+    }
+    if (empData != selectedOption) {
+      const index = tempData.indexOf(employee);
+      tempData.splice(index, 1);
+    }
+  }
+  filteredData = tempData.slice();
+  return filteredData;
 }
 
 function filterOptionsApply() {
-  showAllRows();
-  //Status
-  for (row of tableRows) {
-    var status = row.children[6].children[0].innerHTML;
-    if (filterSelect[0].value == "") break;
-    else if (status != filterSelect[0].value) {
-      row.classList.add("hide");
-    }
+  let filteredData = JSON.parse(localStorage.getItem("employeesDetails"));
+
+  if (filterSelect[0].value != "") {
+    filteredData = filter(
+      "status",
+      filterSelect[0].value,
+      filteredData
+    ).slice();
+  }
+  if (filterSelect[1].value != "") {
+    filteredData = filter(
+      "location",
+      filterSelect[1].value,
+      filteredData
+    ).slice();
+  }
+  if (filterSelect[2].value != "") {
+    filteredData = filter(
+      "department",
+      filterSelect[2].value,
+      filteredData
+    ).slice();
   }
 
-  //Location
-  for (row of tableRows) {
-    city = row.children[2].innerHTML;
-    if (filterSelect[1].value == "") break;
-    else if (city != filterSelect[1].value) {
-      row.classList.add("hide");
+  unpopulateTableData();
+  populateTableData(filteredData);
+}
+
+//Reset Filter
+function resetFilter() {
+  let data = JSON.parse(localStorage.getItem("employeesDetails"));
+  filterSelect[0].selectedIndex = 0;
+  filterSelect[1].selectedIndex = 0;
+  filterSelect[2].selectedIndex = 0;
+
+  btnFilters[3].style.display = "none";
+  btnFilters[4].style.display = "none";
+
+  unpopulateTableData();
+  populateTableData(data);
+}
+
+// Add Employee
+function handleAddEmployee() {
+  unpopulateTableData();
+  window.open("addemployee.html");
+  var newData = localStorage.getItem("employeesDetails");
+  populateTableData(newData);
+}
+
+//Delete Selection
+// const tableRows = document.querySelectorAll(".employee-table-row"
+function displayDelete() {
+  const checkBoxes = document.querySelectorAll(".row-checkbox");
+  const delBtn = document.querySelector(".btn-delete");
+  let count = 0;
+  for (let checkBox of checkBoxes) {
+    if (checkBox.checked == true) {
+      count++;
     }
   }
-
-  //Department
-  for (row of tableRows) {
-    var department = row.children[3].innerHTML;
-    if (filterSelect[2].value == "") break;
-    else if (department != filterSelect[2].value) {
-      row.classList.add("hide");
-    }
+  if (count > 0) {
+    delBtn.style.display = "block";
+  } else {
+    delBtn.style.display = "none";
   }
 }

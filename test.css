@@ -1,137 +1,40 @@
-  /* Employee Table */
-  .employee-table-section {
-    margin: 1.5% 0%;
-    box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.205);
-    border-radius: 10px;
-  }
+.ellipsis{
+  display: flex;
+  flex-direction: column;
+  padding: 1%;
+
+}
+.ellipsis-icon{
+  position: relative;
+}
+.ellipsis:hover{
+  cursor: pointer;
+  background-color:cadetblue;
+}
+.ellipsis-menu{
   
-  .employee-table-section-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0.3% 2%;
-  }
-  
-  .employee-table-section-header-del {
-    width: 100%;
-  }
-  
-  .btn-delete {
-    margin: 10px;
-    padding: 1% 2%;
-    border-radius: 5px;
-    border: none;
-    color: white;
-    background-color: #ff9494;
-  }
-  
-  .btn-delete:hover {
-    background-color: #f44848;
-  }
-  
-  .employee-rows-section {
-    height: calc(100vh - 450px);
-    overflow-y: auto;
-  }
-  
-  .employee-table {
-    width: 100%;
-    font-size: 12px;
-    font-weight: 500;
-    border-collapse: collapse;
-  }
-  
-  .employee-table-row th,
-  .employee-table-row td {
-    white-space: nowrap;
-    padding: 10px 20px;
-  }
-  
-  .employee-table-row {
-    border: 1px solid rgba(128, 128, 128, 0.3);
-    border-left: none;
-    border-right: none;
-  
-  }
-  
-  .employee-rows-section::-webkit-scrollbar {
-    height: 3px;
-    width: 3px;
-    color: red;
-  }
-  
-  .employee-rows-section::-webkit-scrollbar-track {
-    background: transparent;
-    margin-top: 3.125rem;
-  }
-  
-  .employee-rows-section::-webkit-scrollbar-thumb {
-    background: red;
-    border-radius: 10px;
-    display: flex;
-  }
-  
-  .employee-table thead{
-    position: sticky;
-    top: 0;
-    font-size: 0.8rem;
-    font-weight: 100;
-    opacity: 100%;
-    height: 3.125rem;
-    text-align: left;
-    background-color: rgba(250,250,252,1);
-    z-index: 2;
-    box-shadow:0 -1px #ccc,0 1px #ccc;
-  }
-  
-  
-  .table-user img {
-    margin-right: 1rem;
-    border-radius: 50%;
-  }
-  
-  .employee-table-row input {
-    scale: 1.4;
-  }
-  
-  .table-user {
-    display: flex;
-  }
-  
-  .user-profile-name,
-  .user-profile-email,
-  .active-btn {
-    font-weight: 500;
-  }
-  
-  th {
-    text-align: left;
-    font-weight: 600;
-    opacity: 100%;
-    color: #415682;
-  }
-  
-  .table-user img {
-    width: 36px;
-    height: 36px;
-  }
-  
-  .user-profile-email {
-    font-size: 0.9rem;
-    color: #5b6883;
-    opacity: 90%;
-  }
-  
-  .status-btn {
-    padding: 7.5% 15%;
-    border: none;
-    border-radius: 5px;
-    color: green;
-    background-color: #e4f8e8;
-  }
-  
-  .employee-table-row:hover {
-    background-color: #fff4f4;
-    cursor: pointer;
-    border-radius: 25px;
-  }
+  height: 0px;
+  z-index: 2;
+  overflow: hidden;
+  position: absolute;
+  flex-direction: column;
+  border-radius: 8px;
+  border-top-left-radius: 0px;
+  font-size: 0.8rem;
+  background-color: bisque;
+  /* border:1px solid black; */
+  width: 10%;
+  transition: 0.2s ease;
+}
+.ellipsis-menu.active{
+  height: 120px;
+}
+
+.ellipsis-menu div{
+  padding: 8%;
+}
+.ellipsis-menu div:hover{
+  background-color: antiquewhite;
+  border-radius: 8px;
+  cursor: pointer;
+}
