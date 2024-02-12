@@ -213,7 +213,8 @@ th {
   transition: 0.2s ease;
 }
 .ellipsis-menu.active{
-  height: 120px;
+  height: 100px;
+  width: 100px;
 }
 
 .ellipsis-menu div{

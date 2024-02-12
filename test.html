@@ -6,7 +6,7 @@
     <title>Test</title>
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="test.css" />
-    <!-- <link rel="stylesheet" href="styles/employee.css"> -->
+    <link rel="stylesheet" href="styles/employee.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -16,53 +16,65 @@
     />
   </head>
   <body>
-    <h1>Hello</h1>
-    <h1>Hello</h1>
-    <h1>Hello</h1>
-    <div class="ellipsis" onclick="showEllipsisMenu()">
-      <div class="ellipsis-icon">
-        <i class="fa-solid fa-ellipsis"></i>
+    <div class="employee-table-section">
+      <div class="employee-table-section-header flex">
+        <div class="employee-table-section-header-del flex">
+          <img
+            src="assets/interface/arrow-turn-left-down.svg"
+            alt="arrow-turn-left-down"
+          />
+          <button class="btn-delete">Delete</button>
+        </div>
 
+        <div class="employee-table-section-header-table-add">
+          <img src="assets/table-add.png" alt="table-add" />
+        </div>
       </div>
-      <div class="ellipsis-menu">
-        <div>View Details</div>
-        <div>Edit</div>
-        <div>Delete</div>
-      </div>
-    </div>
-    <div class="ellipsis">
-      <div class="ellipsis-icon">
-        <i class="fa-solid fa-ellipsis"></i>
+      <div class="employee-rows-section">
+        <table class="employee-table">
+          <thead>
+            <tr class="employee-table-row employee-table-row-heading">
+              <th><input type="checkbox" name="check" /></th>
+              <th id="user" class="sortable-columns" onclick="sortTable(this.id)">USER <i class="fa-solid fa-sort"></i></th>
+              <th id="location" class="sortable-columns" onclick="sortTable(this.id)">LOCATION <i class="fa-solid fa-sort"></i></th>
+              <th id="department" class="sortable-columns" onclick="sortTable(this.id)">DEPARTMENT <i class="fa-solid fa-sort"></i></th>
+              <th id="role" class="sortable-columns" onclick="sortTable(this.id)">ROLE <i class="fa-solid fa-sort"></i></th>
+              <th id="emp-no" class="sortable-columns" onclick="sortTable(this.id)">EMP NO <i class="fa-solid fa-sort"></i></th>
+              <th>STATUS <i class="fa-solid fa-sort"></i></th>
+              <th id="join-date" class="sortable-columns">JOIN DT <i class="fa-solid fa-sort"></i></th>
+              <th>...</th>
+            </tr>
+          </thead>
 
-      </div>
-      <div class="ellipsis-menu">
-        <div>View Details</div>
-        <div>Edit</div>
-        <div>Delete</div>
-      </div>
-    </div>
-    <div class="ellipsis">
-      <div class="ellipsis-icon">
-        <i class="fa-solid fa-ellipsis"></i>
-
-      </div>
-      <div class="ellipsis-menu">
-        <div>View Details</div>
-        <div>Edit</div>
-        <div>Delete</div>
-      </div>
-    </div>
-    <div class="ellipsis" >
-      <div class="ellipsis-icon">
-        <i class="fa-solid fa-ellipsis"></i>
-
-      </div>
-      <div class="ellipsis-menu">
-        <div>View Details</div>
-        <div>Edit</div>
-        <div>Delete</div>
+          <tbody class="employee-table-data">
+            <!-- <tr class="employee-table-row">
+              <td><input type="checkbox" name="check" /></td>
+              <td>
+                <div class="table-user">
+                  <img
+                    src="assets/user-profile-1.png"
+                    alt="user-profile-pic"
+                  />
+                  <div>
+                    <p class="user-profile-name">Fedgar Jones</p>
+                    <p class="user-profile-email">edgar@tezo.com</p>
+                  </div>
+                </div>
+              </td>
+              <td>Hyderabad</td>
+              <td>Product Engg</td>
+              <td>Full-Stack Developer</td>
+              <td>TZ002341</td>
+              <td><div class="status-btn">Active</div></td>
+              <td>12/03/2023</td>
+              <td>...</td>
+            </tr> -->
+            
+          </tbody>
+        </table>
       </div>
     </div>
   </body>
+  <script src="script.js"></script>
   <script src="test.js"></script>
 </html>

@@ -12,6 +12,9 @@ const headerContainer = document.querySelectorAll(
 );
 const pseudoSideBar = document.querySelector(".pseudo-side-bar");
 
+var data = [];
+var alphabetFiltered = [];
+var optionFiltered = [];
 // Collapse
 var isCollapsed = false;
 function sidePanelToggle() {
@@ -44,15 +47,15 @@ function sidePanelToggle() {
 
 // Populating the table with rows
 //Fetching data from JSON
-var data = [];
 fetch("./data.json")
   .then((response) => response.json())
   .then((json) => {
-    if (!localStorage.getItem("employeesDetails")) {
-      localStorage.setItem("employeesDetails", JSON.stringify(json.employees));
-    }
-    data = localStorage.getItem("employeesDetails");
-    data = JSON.parse(data);
+    localStorage.setItem("employeesDetails", JSON.stringify(json.employees));
+    localStorage.setItem("alphabetFiltered", JSON.stringify(json.employees));
+    localStorage.setItem("optionFiltered", JSON.stringify(json.employees));
+    data = JSON.parse(localStorage.getItem("employeesDetails"));
+    alphabetFiltered=json.employees;
+    optionFiltered=json.employees;
     populateTableData(data);
   });
 
@@ -99,7 +102,7 @@ function populateTableData(data) {
     <td><div class="status-btn">${status}</div></td>
     <td>${joinDt}</td>
     <td>
-      <div class="ellipsis">
+      <div class="ellipsis" onclick="showEllipsisMenu(this)">
         <div class="ellipsis-icon">
           <i class="fa-solid fa-ellipsis"></i>
         </div>
@@ -115,13 +118,9 @@ function populateTableData(data) {
   }
 }
 
-const ellipsis = document.querySelectorAll(".ellipsis");
-ellipsis.forEach((elp) => {
-  elp.addEventListener("click", showEllipsisMenu);
-});
 
-function showEllipsisMenu() {
-  this.children[1].classList.toggle("active");
+function showEllipsisMenu(div){
+    div.children[1].classList.toggle("active");
 }
 
 function unpopulateTableData() {
@@ -145,26 +144,31 @@ for (let i = 1; i <= 26; i++) {
 
 //Filtering the rows
 const buttons = document.querySelectorAll(".filter-alphabets button");
-var isApplied = false;
+var isAlphabetFiltered = false;
+var isOptionFiltered=false;
 
 function filterNames(char, btn) {
-  unpopulateTableData();
-  let filteredData = [];
-  let data = JSON.parse(localStorage.getItem("employeesDetails"));
-
-  for (let employee of data) {
-    if (employee.userProfile.firstName[0] == char) {
-      filteredData.push(employee);
+  alphabetFiltered=JSON.parse(localStorage.getItem("optionFiltered"));
+  var tempData = alphabetFiltered.slice();
+  if (!isAlphabetFiltered) {
+    for (let employee of alphabetFiltered) {
+      if (employee.userProfile.firstName[0] != char) {
+        const index = tempData.indexOf(employee);
+        tempData.splice(index, 1);
+      }
     }
-  }
-
-  if (!isApplied) {
-    populateTableData(filteredData);
+    alphabetFiltered=tempData.slice();
+    localStorage.setItem("alphabetFiltered",JSON.stringify(alphabetFiltered));
+    unpopulateTableData();
+    populateTableData(alphabetFiltered);
   } else {
-    populateTableData(data);
+    localStorage.setItem("alphabetFiltered",JSON.stringify(data));
+    unpopulateTableData();
+    let oFiltered= JSON.parse(localStorage.getItem("optionFiltered"));
+    populateTableData(oFiltered);
   }
 
-  isApplied = !isApplied;
+  isAlphabetFiltered = !isAlphabetFiltered;
   btn.classList.toggle("active");
   for (let button of buttons) {
     if (button !== btn) {
@@ -194,11 +198,13 @@ filterSelect[2].onchange = () => {
   btnFilters[4].style.display = "inline-block";
 };
 
+function filter(criteria, selectedOption) {
+  
+  let tempData = optionFiltered.slice();
 
-function filter(criteria, selectedOption, filteredData) {
-  var tempData = filteredData.slice();
   var empData = undefined;
-  for (let employee of filteredData) {
+
+  for (let employee of optionFiltered) {
     if (criteria == "location") {
       empData = employee["role"]["location"];
     } else if (criteria == "department") {
@@ -216,58 +222,46 @@ function filter(criteria, selectedOption, filteredData) {
       tempData.splice(index, 1);
     }
   }
-  filteredData = tempData.slice();
-  return filteredData;
+  optionFiltered=tempData.slice();
+
 }
 
 function filterOptionsApply() {
-  let filteredData = JSON.parse(localStorage.getItem("employeesDetails"));
-
+  optionFiltered = JSON.parse(localStorage.getItem("alphabetFiltered"));
   if (filterSelect[0].value != "") {
-    filteredData = filter(
-      "status",
-      filterSelect[0].value,
-      filteredData
-    ).slice();
+    filter("status", filterSelect[0].value);
   }
   if (filterSelect[1].value != "") {
-    filteredData = filter(
-      "location",
-      filterSelect[1].value,
-      filteredData
-    ).slice();
+    filter("location", filterSelect[1].value);
   }
   if (filterSelect[2].value != "") {
-    filteredData = filter(
-      "department",
-      filterSelect[2].value,
-      filteredData
-    ).slice();
+    filter("department", filterSelect[2].value);
   }
-
   unpopulateTableData();
-  populateTableData(filteredData);
+  populateTableData(optionFiltered);
+  localStorage.setItem("optionFiltered",JSON.stringify(optionFiltered));
 }
 
 //Reset Filter
 function resetFilter() {
-  let data = JSON.parse(localStorage.getItem("employeesDetails"));
+  localStorage.setItem("optionFiltered",JSON.stringify(data));
   filterSelect[0].selectedIndex = 0;
   filterSelect[1].selectedIndex = 0;
   filterSelect[2].selectedIndex = 0;
-
+  
   btnFilters[3].style.display = "none";
   btnFilters[4].style.display = "none";
-
+  
   unpopulateTableData();
-  populateTableData(data);
+  let aData = JSON.parse(localStorage.getItem("alphabetFiltered"));
+  populateTableData(aData);
 }
 
 // Add Employee
 function handleAddEmployee() {
   unpopulateTableData();
   window.open("addemployee.html");
-  var newData = localStorage.getItem("employeesDetails");
+  var newData = JSON.parse(localStorage.getItem("employeesDetails"));
   populateTableData(newData);
 }
 

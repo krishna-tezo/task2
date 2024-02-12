@@ -48,10 +48,9 @@ btn.addEventListener("click", (e) => {
   };
   var oldData = JSON.parse(localStorage.getItem("employeesDetails"));
   oldData.push(employee);
-  //   console.log(employeePicURL);
   localStorage.setItem("employeesDetails", JSON.stringify(oldData));
-  window.opener.location.reload();
   alert("New employee has been added");
+  window.opener.location.reload();
   window.close();
 
 
