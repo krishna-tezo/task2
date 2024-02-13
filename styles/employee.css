@@ -16,7 +16,7 @@
   justify-content: space-between;
 }
 
-.filter-alphabets button {
+.filter-alphabets div {
   align-items: center;
   padding: 1% 1%;
   background-color: rgb(234, 235, 238);
@@ -26,14 +26,14 @@
   border: none;
 }
 
-.filter-alphabets button:hover {
+.filter-alphabets div:hover {
   cursor: pointer;
   background-color: #f44848;
   opacity: 100%;
   color: white;
 }
 
-.filter-alphabets button.active{
+.filter-alphabets div.active{
   background-color: red;
   opacity: 100%;
   color: white;

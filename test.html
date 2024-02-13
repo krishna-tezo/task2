@@ -6,7 +6,7 @@
     <title>Test</title>
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="test.css" />
-    <link rel="stylesheet" href="styles/employee.css">
+    <link rel="stylesheet" href="styles/employee.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -16,7 +16,70 @@
     />
   </head>
   <body>
-    <div class="employee-table-section">
+    <!-- Filter Alphabets-->
+    <div class="filter">
+      <img
+        src="assets/interface/filter.svg"
+        class="filter-icon"
+        alt="filter"
+      />
+      <div class="filter-alphabets flex"></div>
+    </div>
+
+    <!-- Filters -->
+    <div class="filter-options flex">
+      <div class="filter-columns flex">
+        <div><p class="filter-options-title">Filter</p></div>
+        <img src="assets/filter-sort.png" alt="" />
+
+        <div>
+          <div class="placeholder" onclick="showDropdown(this)">
+            <div class="filter-options-btn">Status</div>
+          </div>
+          <div class="dropdown">
+            <div class="drop-down-menu status" onclick="addToFilter(this)">Active</div>
+            <div class="drop-down-menu status" onclick="addToFilter(this)">Inactive</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="placeholder" onclick="showDropdown(this)">
+            <div class="filter-options-btn">Location</div>
+          </div>
+          <div class="dropdown">
+            <div class="drop-down-menu location" onclick="addToFilter(this)">Bangalore</div>
+            <div class="drop-down-menu location" onclick="addToFilter(this)">Hyderabad</div>
+          </div>
+        </div>
+
+        <div onclick="showDropdown(this)">
+          <div class="placeholder">
+            <div class="filter-options-btn">Department</div>
+          </div>
+          <div class="dropdown">
+            <div class="drop-down-menu department" onclick="addToFilter(this)">Product Engg</div>
+            <div class="drop-down-menu department" onclick="addToFilter(this)">HR</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button
+          class="filter-options-btn filter-options-reset"
+          onclick="resetFilter()"
+        >
+          Reset
+        </button>
+        <button
+          class="filter-options-btn filter-options-apply"
+          onclick="filterOptionsApply()"
+        >
+          Apply
+        </button>
+      </div>
+    </div>
+
+    <!-- <div class="employee-table-section">
       <div class="employee-table-section-header flex">
         <div class="employee-table-section-header-del flex">
           <img
@@ -47,7 +110,7 @@
           </thead>
 
           <tbody class="employee-table-data">
-            <!-- <tr class="employee-table-row">
+            <tr class="employee-table-row">
               <td><input type="checkbox" name="check" /></td>
               <td>
                 <div class="table-user">
@@ -68,13 +131,14 @@
               <td><div class="status-btn">Active</div></td>
               <td>12/03/2023</td>
               <td>...</td>
-            </tr> -->
+            </tr>
             
           </tbody>
         </table>
-      </div>
-    </div>
+      </div> 
+    </div>-->
+    <button onclick="apply()">Apply</button>
   </body>
-  <script src="script.js"></script>
+  <!-- <script src="script.js"></script> -->
   <script src="test.js"></script>
 </html>

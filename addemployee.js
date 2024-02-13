@@ -1,5 +1,3 @@
-// import { unpopulateTableData, populateTableData } from "./script.js";
-
 const form = document.querySelector("#employeeForm");
 const btn = document.querySelector("#submit-button");
 
@@ -19,9 +17,6 @@ btn.addEventListener("click", (e) => {
   const employeeDepartment = formData.get("department");
   const employeeMobileNumber = formData.get("mobileNumber");
 
-  // for(let item of formData){
-  //     console.log(item[0],item[1]);
-  // }
   var employee = {
     userProfile: {
       link: employeePicURL,
@@ -47,11 +42,10 @@ btn.addEventListener("click", (e) => {
     },
   };
   var oldData = JSON.parse(localStorage.getItem("employeesDetails"));
+
   oldData.push(employee);
-  localStorage.setItem("employeesDetails", JSON.stringify(oldData));
-  alert("New employee has been added");
+  localStorage.setItem("employeesDetails", JSON.stringify(oldData)); 
   window.opener.location.reload();
+  alert("New Employee data has been added");
   window.close();
-
-
 });

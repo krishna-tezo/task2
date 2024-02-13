@@ -1,23 +1,22 @@
-const collapseBtn = document.querySelector(".side-panel-collapse-btn");
-const mainContainer = document.querySelector(".main-container");
-const sidePanel = document.querySelector(".side-panel");
-const logoImage = document.querySelector(".logo-img");
-const selectorTitles = document.querySelectorAll(".side-panel-title");
-const rightLogos = document.querySelectorAll(".side-panel-logo-right");
-const updateBox = document.querySelector(".side-panel-update-box");
-const sidePanelHeadings = document.querySelectorAll(".side-panel-heading");
-const svgImages = document.querySelectorAll(".svg-image");
-const headerContainer = document.querySelectorAll(
-  ".side-panel-header-container"
-);
-const pseudoSideBar = document.querySelector(".pseudo-side-bar");
-
 var data = [];
-var alphabetFiltered = [];
-var optionFiltered = [];
+var displayData = [];
+
 // Collapse
 var isCollapsed = false;
 function sidePanelToggle() {
+  const collapseBtn = document.querySelector(".side-panel-collapse-btn");
+  const mainContainer = document.querySelector(".main-container");
+  const sidePanel = document.querySelector(".side-panel");
+  const logoImage = document.querySelector(".logo-img");
+  const selectorTitles = document.querySelectorAll(".side-panel-title");
+  const rightLogos = document.querySelectorAll(".side-panel-logo-right");
+  const updateBox = document.querySelector(".side-panel-update-box");
+  const sidePanelHeadings = document.querySelectorAll(".side-panel-heading");
+  const svgImages = document.querySelectorAll(".svg-image");
+  const headerContainer = document.querySelectorAll(
+    ".side-panel-header-container"
+  );
+  const pseudoSideBar = document.querySelector(".pseudo-side-bar");
   mainContainer.classList.toggle("collapsed");
   updateBox.classList.toggle("hide");
   pseudoSideBar.classList.toggle("hide");
@@ -45,17 +44,15 @@ function sidePanelToggle() {
   isCollapsed = !isCollapsed;
 }
 
-// Populating the table with rows
+//Populating the table with rows
 //Fetching data from JSON
 fetch("./data.json")
   .then((response) => response.json())
   .then((json) => {
-    localStorage.setItem("employeesDetails", JSON.stringify(json.employees));
-    localStorage.setItem("alphabetFiltered", JSON.stringify(json.employees));
-    localStorage.setItem("optionFiltered", JSON.stringify(json.employees));
+    if (!localStorage.getItem("employeesDetails"))
+      localStorage.setItem("employeesDetails", JSON.stringify(json.employees));
     data = JSON.parse(localStorage.getItem("employeesDetails"));
-    alphabetFiltered=json.employees;
-    optionFiltered=json.employees;
+    displayData = data.slice();
     populateTableData(data);
   });
 
@@ -118,9 +115,8 @@ function populateTableData(data) {
   }
 }
 
-
-function showEllipsisMenu(div){
-    div.children[1].classList.toggle("active");
+function showEllipsisMenu(div) {
+  div.children[1].classList.toggle("active");
 }
 
 function unpopulateTableData() {
@@ -135,126 +131,185 @@ function unpopulateTableData() {
 const filterDiv = document.querySelector(".filter-alphabets");
 
 for (let i = 1; i <= 26; i++) {
-  const btn = document.createElement("button");
+  const div = document.createElement("div");
   const char = String.fromCharCode(64 + i);
-  btn.onclick = filterNames.bind(this, char, btn);
-  btn.innerHTML = `${char}`;
-  filterDiv.appendChild(btn);
+  div.setAttribute("onclick", "addToFilter(this)");
+  div.innerHTML = `${char}`;
+  filterDiv.appendChild(div);
 }
 
-//Filtering the rows
-const buttons = document.querySelectorAll(".filter-alphabets button");
-var isAlphabetFiltered = false;
-var isOptionFiltered=false;
+function showDropdown(currFilterOption) {
+  currFilterOption.nextElementSibling.classList.toggle("active");
+  const btnFilters = document.querySelectorAll(".filter-options-btn");
+  btnFilters[3].style.display = "inline-block";
+  btnFilters[4].style.display = "inline-block";
+}
 
-function filterNames(char, btn) {
-  alphabetFiltered=JSON.parse(localStorage.getItem("optionFiltered"));
-  var tempData = alphabetFiltered.slice();
-  if (!isAlphabetFiltered) {
-    for (let employee of alphabetFiltered) {
-      if (employee.userProfile.firstName[0] != char) {
-        const index = tempData.indexOf(employee);
-        tempData.splice(index, 1);
-      }
-    }
-    alphabetFiltered=tempData.slice();
-    localStorage.setItem("alphabetFiltered",JSON.stringify(alphabetFiltered));
-    unpopulateTableData();
-    populateTableData(alphabetFiltered);
+//Adding data to the object
+var selectedFilter = {
+  char: [],
+  status: [],
+  location: [],
+  department: [],
+};
+
+function addToFilter(element) {
+  var criteria = "";
+  if (element.innerHTML.length == 1) {
+    criteria = "char";
   } else {
-    localStorage.setItem("alphabetFiltered",JSON.stringify(data));
-    unpopulateTableData();
-    let oFiltered= JSON.parse(localStorage.getItem("optionFiltered"));
-    populateTableData(oFiltered);
+    displayDelete();
+    criteria = element.classList[1];
   }
-
-  isAlphabetFiltered = !isAlphabetFiltered;
-  btn.classList.toggle("active");
-  for (let button of buttons) {
-    if (button !== btn) {
-      button.classList.toggle("not-allowed");
-    }
+  var filterName = element.innerHTML;
+  var arr = selectedFilter[criteria];
+  if (!arr.includes(filterName)) {
+    arr.push(filterName);
+  } else {
+    arr.splice(arr.indexOf(filterName), 1);
+  }
+  element.classList.toggle("active");
+  if (criteria == "char") {
+    applyFilter();
   }
 }
 
-//Fliter options
+function applyFilter() {
+  displayData = data.slice();
+  let types = Object.keys(selectedFilter);
+  var arr = [];
+  types.forEach((type) => {
+    arr = selectedFilter[type];
+    if (arr.length > 0) alphabetFilter(type, arr);
+  });
+  unpopulateTableData();
+  populateTableData(displayData);
+}
 
-//Hide Buttons
-const btnFilters = document.querySelectorAll(".filter-options-btn");
-const filterSelect = document.getElementsByClassName("filter-options-btn");
-filterSelect[0].onchange = () => {
-  console.log(filterSelect[0].value);
-  btnFilters[3].style.display = "inline-block";
-  btnFilters[4].style.display = "inline-block";
-};
-filterSelect[1].onchange = () => {
-  console.log(filterSelect[1].value);
-  btnFilters[3].style.display = "inline-block";
-  btnFilters[4].style.display = "inline-block";
-};
-filterSelect[2].onchange = () => {
-  console.log(filterSelect[2].value);
-  btnFilters[3].style.display = "inline-block";
-  btnFilters[4].style.display = "inline-block";
-};
+function alphabetFilter(type, arr) {
+  var tempData = displayData.slice();
+  var valueToCompare = undefined;
 
-function filter(criteria, selectedOption) {
-  
-  let tempData = optionFiltered.slice();
-
-  var empData = undefined;
-
-  for (let employee of optionFiltered) {
-    if (criteria == "location") {
-      empData = employee["role"]["location"];
-    } else if (criteria == "department") {
-      empData = employee["role"]["department"];
+  for (let employee of displayData) {
+    if (type == "char") {
+      valueToCompare = employee.userProfile.firstName[0];
+    } else if (type == "location") {
+      valueToCompare = employee["role"]["location"];
+    } else if (type == "department") {
+      valueToCompare = employee["role"]["department"];
     } else {
-      empData = employee[criteria];
-      if (empData == false) {
-        empData = "Inactive";
+      valueToCompare = employee[type];
+      if (valueToCompare == false) {
+        valueToCompare = "Inactive";
       } else {
-        empData = "Active";
+        valueToCompare = "Active";
       }
     }
-    if (empData != selectedOption) {
-      const index = tempData.indexOf(employee);
-      tempData.splice(index, 1);
+
+    let isMatched = false;
+    for (let i of arr) {
+      if (valueToCompare == i) {
+        isMatched = true;
+      }
+    }
+    if (!isMatched) {
+      tempData.splice(tempData.indexOf(employee), 1);
     }
   }
-  optionFiltered=tempData.slice();
-
-}
-
-function filterOptionsApply() {
-  optionFiltered = JSON.parse(localStorage.getItem("alphabetFiltered"));
-  if (filterSelect[0].value != "") {
-    filter("status", filterSelect[0].value);
-  }
-  if (filterSelect[1].value != "") {
-    filter("location", filterSelect[1].value);
-  }
-  if (filterSelect[2].value != "") {
-    filter("department", filterSelect[2].value);
-  }
-  unpopulateTableData();
-  populateTableData(optionFiltered);
-  localStorage.setItem("optionFiltered",JSON.stringify(optionFiltered));
+  displayData = tempData.slice();
 }
 
 //Reset Filter
 function resetFilter() {
-  localStorage.setItem("optionFiltered",JSON.stringify(data));
-  filterSelect[0].selectedIndex = 0;
-  filterSelect[1].selectedIndex = 0;
-  filterSelect[2].selectedIndex = 0;
-  
+  selectedFilter.status = [];
+  selectedFilter.location = [];
+  selectedFilter.department = [];
+  let filterBtn = document.querySelectorAll(".drop-down-menu");
+  applyFilter();
+  filterBtn.forEach((btn) => {
+    btn.classList.remove("active");
+  });
   btnFilters[3].style.display = "none";
   btnFilters[4].style.display = "none";
-  
-  unpopulateTableData();
-  let aData = JSON.parse(localStorage.getItem("alphabetFiltered"));
-  populateTableData(aData);
+}
+
+//Table To CSV
+var csvData = "";
+function exportToCSV() {
+  let employees = displayData.slice();
+  let headers = Object.keys(employees[0]);
+  headers.forEach((item) => {
+    if (item == "userProfile") {
+      csvData += "Name" + ", ";
+      Object.keys(employees[0]["userProfile"]).forEach((userProfileItem) => {
+        if (userProfileItem == "email") {
+          csvData += userProfileItem + ", ";
+        }
+      });
+    } else if (item == "role") {
+      Object.keys(employees[0]["role"]).forEach((roleItem) => {
+        if (
+          roleItem == "roleName" ||
+          roleItem == "department" ||
+          roleItem == "location"
+        ) {
+          csvData += roleItem + ", ";
+        }
+      });
+    } else {
+      csvData += item + ", ";
+    }
+  });
+  csvData += "\n";
+  csvData = getData(csvData,employees);
+  console.log(csvData);
+  downloadCSVFile(csvData);
+}
+function getData(csvData,employees) {
+  for (let employee of employees) {
+    let headers = Object.keys(employees[0]);
+    headers.forEach((item) => {
+      if (item == "userProfile") {
+        let name = "";
+        let email = "";
+        Object.keys(employees[0]["userProfile"]).forEach((userProfileItem) => {
+          if (userProfileItem == "firstName" || userProfileItem == "lastName")
+            name += employee["userProfile"][userProfileItem] + " ";
+          else if (userProfileItem == "email") {
+            email += employee["userProfile"][userProfileItem];
+          }
+        });
+        csvData += name + ", " + email + ", ";
+      } else if (item == "role") {
+        Object.keys(employees[0]["role"]).forEach((roleItem) => {
+          if (
+            roleItem == "roleName" ||
+            roleItem == "department" ||
+            roleItem == "location"
+          ) {
+            csvData += employee["role"][roleItem] + ", ";
+          }
+        });
+      } else {
+        csvData += employee[item] + ", ";
+      }
+    });
+    csvData += "\n";
+  }
+  return csvData;
+}
+
+function downloadCSVFile(csvData) {
+  var blob = new Blob([csvData], { type: "text/csv;charset=utf-8;" });
+  const exportBtn = document.querySelector(".employees-header-btn-export");
+  var link = document.createElement("a");
+  if (link.download !== undefined) {
+    var url = URL.createObjectURL(blob);
+    link.setAttribute("href", url);
+    link.setAttribute("download", "mydata.csv");
+    link.style.visibility = "hidden";
+    link.click();
+  }
 }
 
 // Add Employee
@@ -266,7 +321,7 @@ function handleAddEmployee() {
 }
 
 //Delete Selection
-// const tableRows = document.querySelectorAll(".employee-table-row"
+//const tableRows = document.querySelectorAll(".employee-table-row"
 function displayDelete() {
   const checkBoxes = document.querySelectorAll(".row-checkbox");
   const delBtn = document.querySelector(".btn-delete");

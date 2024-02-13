@@ -200,51 +200,67 @@
         </div>
 
         <!-- Filter Alphabets-->
-        <div class="filter">
-          <img
-            src="assets/interface/filter.svg"
-            class="filter-icon"
-            alt="filter"
-          />
-          <div class="filter-alphabets flex"></div>
-        </div>
+    <div class="filter">
+      <img
+        src="assets/interface/filter.svg"
+        class="filter-icon"
+        alt="filter"
+      />
+      <div class="filter-alphabets flex"></div>
+    </div>
 
-        <!-- Filters -->
-        <div class="filter-options flex">
-          <div class="filter-columns flex">
-            <div><p class="filter-options-title">Filter</p></div>
-            <img src="assets/filter-sort.png" alt="" />
+    <!-- Filters -->
+    <div class="filter-options flex">
+      <div class="filter-columns flex">
+        <div><p class="filter-options-title">Filter</p></div>
+        <img src="assets/filter-sort.png" alt="" />
 
-            <select class="filter-options-btn" name="filters" id="filters">
-              <option value="" hidden>Status</option>
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
-            </select>
-
-            <select class="filter-options-btn" name="filters" id="filter2">
-              <option value="" hidden>Location</option>
-              <option value="Hyderabad">Hyderabad</option>
-              <option value="Bangalore">Bangalore</option>
-            </select>
-
-            <select class="filter-options-btn" name="filters" id="filter3">
-              <option value="" hidden>Department</option>
-              <option value="Product Engg">Product Engg</option>
-              <option value="HR">HR</option>
-            </select>
-
-            
+        <div>
+          <div class="placeholder" onclick="showDropdown(this)">
+            <div class="filter-options-btn">Status</div>
           </div>
-
-          <div>
-            <button class="filter-options-btn filter-options-reset" onclick="resetFilter()">
-              Reset
-            </button>
-            <button class="filter-options-btn filter-options-apply" onclick="filterOptionsApply()">
-              Apply
-            </button>
+          <div class="dropdown">
+            <div class="drop-down-menu status" onclick="addToFilter(this)">Active</div>
+            <div class="drop-down-menu status" onclick="addToFilter(this)">Inactive</div>
           </div>
         </div>
+
+        <div>
+          <div class="placeholder" onclick="showDropdown(this)">
+            <div class="filter-options-btn">Location</div>
+          </div>
+          <div class="dropdown">
+            <div class="drop-down-menu location" onclick="addToFilter(this)">Bangalore</div>
+            <div class="drop-down-menu location" onclick="addToFilter(this)">Hyderabad</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="placeholder" onclick="showDropdown(this)">
+            <div class="filter-options-btn">Department</div>
+          </div>
+          <div class="dropdown">
+            <div class="drop-down-menu department" onclick="addToFilter(this)">Product Engg</div>
+            <div class="drop-down-menu department" onclick="addToFilter(this)">HR</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button
+          class="filter-options-btn filter-options-reset"
+          onclick="resetFilter()"
+        >
+          Reset
+        </button>
+        <button
+          class="filter-options-btn filter-options-apply"
+          onclick="applyFilter()"
+        >
+          Apply
+        </button>
+      </div>
+    </div>
 
         <!-- Employee Table -->
         <div class="employee-table-section">
@@ -265,7 +281,7 @@
             <table class="employee-table">
               <thead>
                 <tr class="employee-table-row employee-table-row-heading">
-                  <th><input type="checkbox" name="check" /></th>
+                  <th><input type="checkbox" name="check" class="row-checkbox" /></th>
                   <th>USER <i class="fa-solid fa-sort"></i></th>
                   <th>LOCATION <i class="fa-solid fa-sort"></i></th>
                   <th>DEPARTMENT <i class="fa-solid fa-sort"></i></th>
