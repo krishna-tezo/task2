@@ -389,6 +389,8 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 .dropdown {
+  z-index: 3;
+  font-size: 0.8rem;
   position: absolute;
   height: 0px;
   overflow: hidden;

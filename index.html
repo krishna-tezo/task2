@@ -203,8 +203,9 @@
     <div class="filter">
       <img
         src="assets/interface/filter.svg"
-        class="filter-icon"
+        class="remove-filter-btn"
         alt="filter"
+        onclick="resetAlphabetFilter()"
       />
       <div class="filter-alphabets flex"></div>
     </div>
@@ -242,6 +243,7 @@
           <div class="dropdown">
             <div class="drop-down-menu department" onclick="addToFilter(this)">Product Engg</div>
             <div class="drop-down-menu department" onclick="addToFilter(this)">HR</div>
+            <div class="drop-down-menu department" onclick="addToFilter(this)">UI/UX</div>
           </div>
         </div>
       </div>
@@ -270,7 +272,7 @@
                 src="assets/interface/arrow-turn-left-down.svg"
                 alt="arrow-turn-left-down"
               />
-              <button class="btn-delete">Delete</button>
+              <button class="btn-delete" onclick="deleteRows()">Delete</button>
             </div>
 
             <div class="employee-table-section-header-table-add">
@@ -281,7 +283,7 @@
             <table class="employee-table">
               <thead>
                 <tr class="employee-table-row employee-table-row-heading">
-                  <th><input type="checkbox" name="check" class="row-checkbox" /></th>
+                  <th><label><input type="checkbox" name="check" id="check-box" class="row-checkbox first-checkbox" onchange="displayDelete(this,undefined)"/></label></th>
                   <th>USER <i class="fa-solid fa-sort"></i></th>
                   <th>LOCATION <i class="fa-solid fa-sort"></i></th>
                   <th>DEPARTMENT <i class="fa-solid fa-sort"></i></th>

@@ -1,5 +1,5 @@
-var data = [];
-var displayData = [];
+let data = [];
+let displayData = [];
 
 // Collapse
 var isCollapsed = false;
@@ -59,16 +59,16 @@ fetch("./data.json")
 function populateTableData(data) {
   const tableBody = document.querySelector(".employee-table-data");
   for (let i = 0; i < data.length; i++) {
-    var imgLink = data[i].userProfile.link;
-    var firstName = data[i].userProfile.firstName;
-    var lastName = data[i].userProfile.lastName;
-    var email = data[i].userProfile.email;
-    var location = data[i].role.location;
-    var department = data[i].role.department;
-    var role = data[i].role.roleName;
-    var empId = data[i].empNo;
-    var status = "";
-    var joinDt = data[i].joinDate;
+    const imgLink = data[i].userProfile.link;
+    const firstName = data[i].userProfile.firstName;
+    const lastName = data[i].userProfile.lastName;
+    const email = data[i].userProfile.email;
+    const location = data[i].role.location;
+    const department = data[i].role.department;
+    const role = data[i].role.roleName;
+    const empId = data[i].empNo;
+    let status = "";
+    const joinDt = data[i].joinDate;
 
     if (data[i].status == true) {
       status = "Active";
@@ -79,7 +79,7 @@ function populateTableData(data) {
     const row = document.createElement("tr");
     row.classList.add("employee-table-row");
     row.innerHTML = `
-    <td><label><input type="checkbox" name="check" id="check-box" class="row-checkbox" onclick="displayDelete()"/></label> </td>
+    <td><label><input type="checkbox" name="check" id="check-box" class="row-checkbox" onchange ="displayDelete(this,'${empId}')"/></label> </td>
     <td>
         <div class="table-user">
           <img
@@ -138,13 +138,6 @@ for (let i = 1; i <= 26; i++) {
   filterDiv.appendChild(div);
 }
 
-function showDropdown(currFilterOption) {
-  currFilterOption.nextElementSibling.classList.toggle("active");
-  const btnFilters = document.querySelectorAll(".filter-options-btn");
-  btnFilters[3].style.display = "inline-block";
-  btnFilters[4].style.display = "inline-block";
-}
-
 //Adding data to the object
 var selectedFilter = {
   char: [],
@@ -153,12 +146,35 @@ var selectedFilter = {
   department: [],
 };
 
+function isOptionFilterActive(){
+  let b=false;
+  
+  Object.keys(selectedFilter).forEach((type)=>{
+    if(type!='char' && selectedFilter[type].length>0)
+      b=true;
+  })
+
+  const btnFilters = document.querySelectorAll(".filter-options-btn");
+  if(b){
+    btnFilters[3].style.display = "inline-block";
+    btnFilters[4].style.display = "inline-block";
+  }
+  else{
+    btnFilters[3].style.display = "none";
+    btnFilters[4].style.display = "none";
+  }
+}
+
+function showDropdown(currFilterOption) {
+  currFilterOption.nextElementSibling.classList.toggle("active");
+  isOptionFilterActive();
+}
+
 function addToFilter(element) {
   var criteria = "";
   if (element.innerHTML.length == 1) {
     criteria = "char";
   } else {
-    displayDelete();
     criteria = element.classList[1];
   }
   var filterName = element.innerHTML;
@@ -170,7 +186,12 @@ function addToFilter(element) {
   }
   element.classList.toggle("active");
   if (criteria == "char") {
+    let removeFilterBtn = document.querySelector(".remove-filter-btn");
+    removeFilterBtn.src="assets/interface/filter_red.svg";
     applyFilter();
+  }
+  else{
+    isOptionFilterActive();
   }
 }
 
@@ -180,13 +201,13 @@ function applyFilter() {
   var arr = [];
   types.forEach((type) => {
     arr = selectedFilter[type];
-    if (arr.length > 0) alphabetFilter(type, arr);
+    if (arr.length > 0) filter(type, arr);
   });
   unpopulateTableData();
   populateTableData(displayData);
 }
 
-function alphabetFilter(type, arr) {
+function filter(type, arr) {
   var tempData = displayData.slice();
   var valueToCompare = undefined;
 
@@ -220,17 +241,30 @@ function alphabetFilter(type, arr) {
 }
 
 //Reset Filter
+function resetAlphabetFilter(){
+  const removeFilterBtn = document.querySelector(".remove-filter-btn");
+  if(selectedFilter.char.length>0){
+    selectedFilter.char=[];
+  }
+  const alphabetDivs = document.querySelectorAll(".filter-alphabets div");
+  for(element of alphabetDivs){
+    element.classList.remove("active");
+  } 
+  removeFilterBtn.src="assets/interface/filter.svg"
+  applyFilter();
+
+}
 function resetFilter() {
   selectedFilter.status = [];
   selectedFilter.location = [];
   selectedFilter.department = [];
   let filterBtn = document.querySelectorAll(".drop-down-menu");
+  // let dropDowns = document.querySelectorAll(".")
   applyFilter();
+  isOptionFilterActive();
   filterBtn.forEach((btn) => {
     btn.classList.remove("active");
   });
-  btnFilters[3].style.display = "none";
-  btnFilters[4].style.display = "none";
 }
 
 //Table To CSV
@@ -265,6 +299,7 @@ function exportToCSV() {
   console.log(csvData);
   downloadCSVFile(csvData);
 }
+
 function getData(csvData,employees) {
   for (let employee of employees) {
     let headers = Object.keys(employees[0]);
@@ -301,15 +336,13 @@ function getData(csvData,employees) {
 
 function downloadCSVFile(csvData) {
   var blob = new Blob([csvData], { type: "text/csv;charset=utf-8;" });
-  const exportBtn = document.querySelector(".employees-header-btn-export");
   var link = document.createElement("a");
-  if (link.download !== undefined) {
-    var url = URL.createObjectURL(blob);
-    link.setAttribute("href", url);
-    link.setAttribute("download", "mydata.csv");
-    link.style.visibility = "hidden";
-    link.click();
-  }
+  var url = URL.createObjectURL(blob);
+
+  link.setAttribute("href", url);
+  link.setAttribute("download", "mydata.csv");
+  link.style.visibility = "hidden";
+  link.click();
 }
 
 // Add Employee
@@ -322,18 +355,61 @@ function handleAddEmployee() {
 
 //Delete Selection
 //const tableRows = document.querySelectorAll(".employee-table-row"
-function displayDelete() {
+let empIdToDel=[];
+
+function displayDelete(checkBox,empId) {
   const checkBoxes = document.querySelectorAll(".row-checkbox");
   const delBtn = document.querySelector(".btn-delete");
-  let count = 0;
-  for (let checkBox of checkBoxes) {
-    if (checkBox.checked == true) {
-      count++;
+  if(empId==undefined){
+    if(checkBox.checked==true){
+      for (let cb of checkBoxes){
+        cb.checked=true;
+      }
+      addAll();
+      
+    }
+    else{
+      for (let cb of checkBoxes) {
+        cb.checked=false;
+      }
+      empIdToDel=[];
     }
   }
-  if (count > 0) {
+  else{
+    if(empIdToDel.includes(empId))
+      empIdToDel.splice(empIdToDel.indexOf(empId),1);
+
+    else
+      empIdToDel.push(empId);
+  }
+
+  if(checkBox.checked==true)
     delBtn.style.display = "block";
-  } else {
+  else
     delBtn.style.display = "none";
+}
+
+function addAll(){
+  empIdToDel=[];
+  let postDeleteData = displayData.slice();
+  for(let emp of postDeleteData){
+    empIdToDel.push(emp['empNo']);
   }
 }
+
+function deleteRows(){
+  for(let emp of displayData){
+    if(empIdToDel.includes(emp['empNo'])){
+      data.splice(data.indexOf(emp),1);
+    }
+  }
+  let fisrtCheckBox=document.querySelector(".first-checkbox").checked=false;
+  resetFilter();
+  resetAlphabetFilter();
+  unpopulateTableData();
+  populateTableData(data);
+}
+
+//Table Sort
+var tableData = displayData.slice();
+var empRow = [];
